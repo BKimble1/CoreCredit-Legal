@@ -1,0 +1,20 @@
+# corecredit.idlery.com
+#
+# Directory-based pages (support/index.html and friends) already resolve at both
+# /support and /support/ on Netlify, so no trailing-slash rule is needed here — and
+# adding one risks a redirect loop. The canonical URL is declared in each page's
+# <link rel="canonical">.
+
+# Addresses that older material, bookmarks, or an earlier build may still point at.
+/index.html               /               301!
+/support.html             /support        301!
+/privacy.html             /privacy        301!
+/terms.html               /terms          301!
+/privacy-policy           /privacy        301!
+/terms-of-use             /terms          301!
+/terms-of-service         /terms          301!
+/help                     /support        301!
+/contact                  /support        301!
+
+# Anything else that does not match a file falls through to the branded 404 page.
+/*                        /404.html       404

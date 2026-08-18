@@ -1,0 +1,3 @@
+# Local build scratch only — never part of a deployable ZIP.
+dist/
+*.zip

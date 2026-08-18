@@ -1,0 +1,32 @@
+# idlery.com
+#
+# Host-based permanent redirects. These only run once the matching domains are
+# added as aliases on this Netlify site (Site configuration -> Domain management).
+
+# The alternate company domain, apex and www, folds into the primary domain.
+http://idleryservices.com/*        https://idlery.com/:splat        301!
+https://idleryservices.com/*       https://idlery.com/:splat        301!
+http://www.idleryservices.com/*    https://idlery.com/:splat        301!
+https://www.idleryservices.com/*   https://idlery.com/:splat        301!
+
+# www of the primary domain folds into the apex.
+http://www.idlery.com/*            https://idlery.com/:splat        301!
+https://www.idlery.com/*           https://idlery.com/:splat        301!
+
+# Section addresses resolve directly to their anchor on the single-page site,
+# so /apps, /about and /contact are real, linkable URLs.
+/apps                              /#apps                           301!
+/about                             /#about                          301!
+/contact                           /#contact                        301!
+/home                              /                                301!
+/index.html                        /                                301!
+
+# CoreCredit lives on its own site.
+/corecredit                        https://corecredit.idlery.com/   301!
+/corecredit/*                      https://corecredit.idlery.com/:splat  301!
+/support                           https://corecredit.idlery.com/support 301!
+/privacy                           https://corecredit.idlery.com/privacy 301!
+/terms                             https://corecredit.idlery.com/terms   301!
+
+# Anything else that does not match a file falls through to the branded 404 page.
+/*                                 /404.html                        404
