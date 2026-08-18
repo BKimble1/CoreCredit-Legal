@@ -20,11 +20,14 @@
 <!-- SITE-HEADER:start -->
 <header class="site-header">
   <div class="wrap">
+    <!-- Interim typographic wordmark. When the Idlery wordmark artwork is added,
+         replace the <span> below with the two <img> elements (light/dark) and
+         nothing else on the page needs to change:
+           <img class="wordmark-img wordmark-light" src="/assets/img/idlery-wordmark-light.png" ...>
+           <img class="wordmark-img wordmark-dark"  src="/assets/img/idlery-wordmark-dark.png"  ...>
+    -->
     <a class="brand" href="/" aria-label="Idlery — home">
-      <img class="wordmark-light" src="/assets/img/idlery-wordmark-light.png"
-           width="330" height="88" alt="Idlery">
-      <img class="wordmark-dark" src="/assets/img/idlery-wordmark-dark.png"
-           width="330" height="88" alt="Idlery">
+      <span class="wordmark">idlery</span>
     </a>
     <nav class="site-nav" aria-label="Primary">
       <ul>
@@ -59,12 +62,9 @@
   <div class="wrap">
     <div class="site-footer__grid">
       <div class="site-footer__brand">
-        <img class="wordmark-light" src="/assets/img/idlery-wordmark-light.png"
-             width="330" height="88" alt="Idlery">
-        <img class="wordmark-dark" src="/assets/img/idlery-wordmark-dark.png"
-             width="330" height="88" alt="Idlery">
+        <span class="wordmark wordmark--sm">idlery</span>
         <p>Focused apps that make everyday work easier.</p>
-        <p style="margin-top:0.5rem"><a href="mailto:support@idlery.com">support@idlery.com</a></p>
+        <p class="site-footer__email"><a href="mailto:support@idlery.com">support@idlery.com</a></p>
       </div>
       <nav aria-labelledby="footer-idlery">
         <h2 id="footer-idlery">Idlery</h2>

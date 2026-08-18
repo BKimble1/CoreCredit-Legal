@@ -31,11 +31,14 @@
 <!-- SITE-HEADER:start -->
 <header class="site-header">
   <div class="wrap">
+    <!-- Interim typographic wordmark. When the Idlery wordmark artwork is added,
+         replace the <span> below with the two <img> elements (light/dark) and
+         nothing else on the page needs to change:
+           <img class="wordmark-img wordmark-light" src="/assets/img/idlery-wordmark-light.png" ...>
+           <img class="wordmark-img wordmark-dark"  src="/assets/img/idlery-wordmark-dark.png"  ...>
+    -->
     <a class="brand" href="/" aria-label="Idlery — home">
-      <img class="wordmark-light" src="/assets/img/idlery-wordmark-light.png"
-           width="330" height="88" alt="Idlery">
-      <img class="wordmark-dark" src="/assets/img/idlery-wordmark-dark.png"
-           width="330" height="88" alt="Idlery">
+      <span class="wordmark">idlery</span>
     </a>
     <nav class="site-nav" aria-label="Primary">
       <ul>
@@ -53,7 +56,7 @@
 
   <!-- ---------------------------------------------------------- hero --- -->
   <section class="hero" id="home" aria-labelledby="hero-h">
-    <div class="wrap">
+    <div class="wrap hero__grid">
       <div class="hero__inner">
         <p class="eyebrow">Idlery Services LLC</p>
         <h1 id="hero-h">Focused apps that make everyday work easier.</h1>
@@ -64,6 +67,12 @@
           <a class="btn btn--primary" href="#apps">See what we make <span class="btn__arrow" aria-hidden="true">&darr;</span></a>
         </div>
         <p class="hero__aside">Independent. iPhone and iPad. Built in the United States.</p>
+      </div>
+
+      <div class="hero__mark" aria-hidden="true">
+        <img src="/assets/img/idlery-mark-512.png"
+             srcset="/assets/img/idlery-mark-256.png 256w, /assets/img/idlery-mark-512.png 512w"
+             sizes="208px" width="208" height="208" alt="">
       </div>
     </div>
   </section>
@@ -111,7 +120,36 @@
               </div>
             </div>
 
-            <!-- APP-PREVIEW -->
+            <!-- At-a-glance panel. This is the slot a CoreCredit screenshot takes
+                 when one is published; the panel below stands in until then. -->
+            <div class="app__preview">
+              <dl class="glance">
+                <div>
+                  <dt>Status</dt>
+                  <dd>Coming soon</dd>
+                </div>
+                <div>
+                  <dt>Platform</dt>
+                  <dd>iPhone, with an adaptive iPad layout</dd>
+                </div>
+                <div>
+                  <dt>Built for</dt>
+                  <dd>Owner-operated one-to-five-bay repair shops</dd>
+                </div>
+                <div>
+                  <dt>Account</dt>
+                  <dd>None — no sign-in, works offline</dd>
+                </div>
+                <div>
+                  <dt>Your data</dt>
+                  <dd>Stays on your device</dd>
+                </div>
+                <div>
+                  <dt>Availability</dt>
+                  <dd>United States at launch</dd>
+                </div>
+              </dl>
+            </div>
           </div>
         </li>
       </ul>
@@ -196,12 +234,9 @@
   <div class="wrap">
     <div class="site-footer__grid">
       <div class="site-footer__brand">
-        <img class="wordmark-light" src="/assets/img/idlery-wordmark-light.png"
-             width="330" height="88" alt="Idlery">
-        <img class="wordmark-dark" src="/assets/img/idlery-wordmark-dark.png"
-             width="330" height="88" alt="Idlery">
+        <span class="wordmark wordmark--sm">idlery</span>
         <p>Focused apps that make everyday work easier.</p>
-        <p style="margin-top:0.5rem"><a href="mailto:support@idlery.com">support@idlery.com</a></p>
+        <p class="site-footer__email"><a href="mailto:support@idlery.com">support@idlery.com</a></p>
       </div>
       <nav aria-labelledby="footer-idlery">
         <h2 id="footer-idlery">Idlery</h2>

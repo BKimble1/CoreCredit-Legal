@@ -11,8 +11,8 @@
   color-scheme: light dark;
 
   /* Sampled from the Idlery wordmarks and square brand mark. */
-  --teal-ink: #0b7c86;   /* teal dark enough to carry body-size text on white */
-  --teal: #12a3ad;       /* the wordmark teal */
+  --teal-ink: #0a737d;   /* teal dark enough to carry body-size text on white */
+  --teal: #0f96a1;       /* the wordmark teal */
   --teal-bright: #3ec7cf; /* the lighter end of the brand-mark gradient */
   --teal-wash: #e8f7f8;
   --teal-edge: #b9e6e9;
@@ -199,11 +199,28 @@ a:hover { color: var(--teal); }
   text-decoration: none;
   border-radius: 0.4rem;
 }
-.brand img { height: 1.75rem; width: auto; }
-.brand .wordmark-dark { display: none; }
+.brand .wordmark-img { height: 1.75rem; width: auto; }
+
+/* Interim typographic wordmark, used until the Idlery wordmark artwork is added.
+   Swapping in the artwork is a matter of replacing the <span class="wordmark">
+   with the two .wordmark-img elements; the light/dark rules below already
+   cover both cases. */
+.wordmark {
+  display: inline-block;
+  font-size: 1.6875rem;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  /* room for the descender on the y — line-height: 1 clips it */
+  line-height: 1.25;
+  color: var(--teal);
+  text-transform: lowercase;
+}
+.wordmark--sm { font-size: 1.375rem; margin-bottom: 0.75rem; }
+
+.wordmark-dark { display: none; }
 @media (prefers-color-scheme: dark) {
-  .brand .wordmark-light { display: none; }
-  .brand .wordmark-dark { display: block; }
+  .wordmark-light { display: none; }
+  .wordmark-dark { display: block; }
 }
 
 .site-nav ul {
@@ -266,11 +283,33 @@ a:hover { color: var(--teal); }
   position: relative;
   padding-block: clamp(3.5rem, 9vw, 7.5rem) clamp(3rem, 8vw, 6.5rem);
   background:
-    radial-gradient(46rem 30rem at 88% -8%, var(--teal-wash), transparent 60%),
-    radial-gradient(34rem 24rem at -6% 108%, var(--teal-wash), transparent 62%),
+    radial-gradient(52rem 34rem at 92% -14%, var(--teal-wash), transparent 58%),
+    radial-gradient(38rem 26rem at -8% 112%, var(--teal-wash), transparent 60%),
     var(--ground);
+  border-bottom: 1px solid var(--rule);
 }
+.hero__grid {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 4rem);
+  align-items: center;
+}
+@media (min-width: 64rem) {
+  .hero__grid { grid-template-columns: minmax(0, 1fr) auto; }
+}
+
 .hero__inner { max-width: 46rem; }
+
+.hero__mark { display: grid; place-items: center; }
+.hero__mark img {
+  width: clamp(6.5rem, 14vw, 13rem);
+  height: auto;
+  border-radius: 22.5%;
+  filter: drop-shadow(0 18px 44px rgb(15 150 161 / 0.24));
+}
+@media (max-width: 63.99rem) {
+  .hero__mark { justify-items: start; }
+  .hero__mark img { width: 5.5rem; }
+}
 .hero h1 { margin-block: 1.125rem 1.5rem; }
 .hero .lede { max-width: 36rem; }
 .hero .btn-row { margin-top: 2.25rem; }
@@ -448,12 +487,8 @@ a:hover { color: var(--teal); }
 .site-footer li + li { margin-top: 0.5rem; }
 .site-footer a { color: var(--ink-mid); text-decoration: none; }
 .site-footer a:hover { color: var(--teal-ink); text-decoration: underline; }
-.site-footer__brand img { height: 1.5rem; width: auto; margin-bottom: 0.875rem; }
-.site-footer__brand .wordmark-dark { display: none; }
-@media (prefers-color-scheme: dark) {
-  .site-footer__brand .wordmark-light { display: none; }
-  .site-footer__brand .wordmark-dark { display: block; }
-}
+.site-footer__brand .wordmark-img { height: 1.5rem; width: auto; margin-bottom: 0.875rem; }
+.site-footer__email { margin-top: 0.5rem; }
 .site-footer__legal {
   margin-top: 2.5rem;
   padding-top: 1.375rem;
@@ -489,4 +524,28 @@ a:hover { color: var(--teal); }
 @media print {
   .site-header, .skip-link { display: none; }
   body { background: #fff; color: #000; font-size: 11pt; }
+}
+
+/* --------------------------------------------------------- glance panel -- */
+.glance { margin: 0; width: 100%; display: grid; gap: 0.875rem; }
+.glance > div {
+  display: grid;
+  gap: 0.125rem;
+  padding-bottom: 0.875rem;
+  border-bottom: 1px solid var(--rule);
+}
+.glance > div:last-child { border-bottom: 0; padding-bottom: 0; }
+.glance dt {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.glance dd {
+  margin: 0;
+  font-size: 0.9688rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.45;
 }
