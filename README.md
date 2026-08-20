@@ -2,9 +2,15 @@
 
 Public support and legal pages for **CoreCredit**, an iOS app published by **Idlery Services LLC**.
 
-- [Support](https://bkimble1.github.io/CoreCredit-Legal/support)
-- [Privacy Policy](https://bkimble1.github.io/CoreCredit-Legal/privacy)
-- [Terms of Use](https://bkimble1.github.io/CoreCredit-Legal/terms)
+The app points at the pages on their own domain:
+
+- [Support](https://corecredit.idlery.com/support)
+- [Privacy Policy](https://corecredit.idlery.com/privacy)
+- [Terms of Use](https://corecredit.idlery.com/terms)
+
+The same four files are also served from GitHub Pages at
+<https://bkimble1.github.io/CoreCredit-Legal/>. Their navigation is relative rather than
+root-absolute, so one copy works from a domain root and from a subdirectory alike.
 
 This repository contains **only** these static pages. It holds no application source code, no
 build configuration, no credentials, and no internal documentation.
