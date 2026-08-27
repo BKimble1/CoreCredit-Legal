@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Idlery — Focused apps that make everyday work easier</title>
-<meta name="description" content="Idlery Services LLC is an independent software development company building practical, carefully designed applications for specific everyday and professional problems. CoreCredit is coming soon for iPhone.">
+<meta name="description" content="Idlery Services LLC is an independent software company building focused tools for specific real-world work. CoreCredit, a parts-core return and vendor-credit ledger for repair shops, is available now on the App Store.">
 <link rel="canonical" href="https://idlery.com/">
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0e1820" media="(prefers-color-scheme: dark)">
@@ -13,37 +13,95 @@
 <meta property="og:site_name" content="Idlery">
 <meta property="og:url" content="https://idlery.com/">
 <meta property="og:title" content="Idlery — Focused apps that make everyday work easier">
-<meta property="og:description" content="An independent software development company building focused tools that make useful work simpler.">
+<meta property="og:description" content="An independent software company building focused tools for specific real-world work. CoreCredit is available now on the App Store.">
 <meta property="og:image" content="https://idlery.com/assets/img/idlery-og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="The Idlery wordmark above the line: focused apps that make everyday work easier.">
+<meta property="og:image:alt" content="The Idlery wordmark above the line: focused apps that make everyday work easier, with the CoreCredit app icon and the note that CoreCredit is now on the App Store.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/assets/img/idlery-mark-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="/assets/img/idlery-mark-180.png">
 <link rel="stylesheet" href="/assets/css/idlery.css">
 <script src="/assets/js/nav.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://idlery.com/#organization",
+      "name": "Idlery Services LLC",
+      "alternateName": "Idlery",
+      "legalName": "Idlery Services LLC",
+      "url": "https://idlery.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://idlery.com/assets/img/idlery-mark-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "image": "https://idlery.com/assets/img/idlery-og.png",
+      "email": "support@idlery.com",
+      "description": "An independent software development company building focused applications for specific everyday and professional problems, on Apple platforms.",
+      "foundingLocation": { "@type": "Country", "name": "United States" },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "support@idlery.com",
+        "availableLanguage": "English"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://idlery.com/#website",
+      "url": "https://idlery.com/",
+      "name": "Idlery",
+      "publisher": { "@id": "https://idlery.com/#organization" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://corecredit.idlery.com/#app",
+      "name": "CoreCredit",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "iOS 18.0 or later",
+      "url": "https://corecredit.idlery.com/",
+      "downloadUrl": "https://apps.apple.com/app/corecredit-core-return-ledger/id6802336957",
+      "description": "A local-first parts-core return and vendor-credit ledger for small auto, diesel, collision and equipment-repair shops.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://apps.apple.com/app/corecredit-core-return-ledger/id6802336957"
+      },
+      "isAccessibleForFree": true,
+      "publisher": { "@id": "https://idlery.com/#organization" }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
+<div class="brandline" aria-hidden="true"></div>
 
 <!-- SITE-HEADER:start -->
 <header class="site-header">
   <div class="wrap">
-    <!-- Interim typographic wordmark. When the Idlery wordmark artwork is added,
-         replace the <span> below with the two <img> elements (light/dark) and
-         nothing else on the page needs to change:
-           <img class="wordmark-img wordmark-light" src="/assets/img/idlery-wordmark-light.png" ...>
-           <img class="wordmark-img wordmark-dark"  src="/assets/img/idlery-wordmark-dark.png"  ...>
-    -->
     <a class="brand" href="/" aria-label="Idlery — home">
-      <span class="wordmark">idlery</span>
+      <img class="wordmark-img wordmark-light" src="/assets/img/idlery-wordmark-light.png"
+           srcset="/assets/img/idlery-wordmark-light.png 360w, /assets/img/idlery-wordmark-light@2x.png 720w"
+           sizes="66px" width="360" height="148" alt="Idlery">
+      <img class="wordmark-img wordmark-dark" src="/assets/img/idlery-wordmark-dark.png"
+           srcset="/assets/img/idlery-wordmark-dark.png 360w, /assets/img/idlery-wordmark-dark@2x.png 720w"
+           sizes="66px" width="360" height="148" alt="Idlery">
     </a>
     <nav class="site-nav" aria-label="Primary">
       <ul>
         <li><a href="/#home">Home</a></li>
         <li><a href="/#apps">Apps</a></li>
+        <li><a href="/#approach">Approach</a></li>
         <li><a href="/#about">About</a></li>
         <li><a href="/#contact">Contact</a></li>
       </ul>
@@ -59,12 +117,13 @@
     <div class="wrap hero__grid">
       <div class="hero__inner">
         <p class="eyebrow">Idlery Services LLC</p>
-        <h1 id="hero-h">Focused apps that make everyday work easier.</h1>
-        <p class="lede">Idlery builds practical, carefully designed applications for specific
-          everyday and professional problems — the small, stubborn tasks that quietly cost people
-          time and money. One job per app, done properly.</p>
+        <h1 id="hero-h">Focused tools for specific real-world work.</h1>
+        <p class="lede">Idlery builds practical, carefully designed applications for the small,
+          stubborn tasks that quietly cost people time and money — the ones a large system charges
+          for and still does badly. One job per app, done properly, on Apple platforms.</p>
         <div class="btn-row">
           <a class="btn btn--primary" href="#apps">See what we make <span class="btn__arrow" aria-hidden="true">&darr;</span></a>
+          <a class="btn btn--ghost" href="https://corecredit.idlery.com">Visit CoreCredit</a>
         </div>
         <p class="hero__aside">Independent. iPhone and iPad. Built in the United States.</p>
       </div>
@@ -72,25 +131,51 @@
       <div class="hero__mark" aria-hidden="true">
         <img src="/assets/img/idlery-mark-512.png"
              srcset="/assets/img/idlery-mark-256.png 256w, /assets/img/idlery-mark-512.png 512w"
-             sizes="208px" width="208" height="208" alt="">
+             sizes="192px" width="512" height="512" alt="">
       </div>
     </div>
   </section>
 
+  <!-- -------------------------------------------------- launch band --- -->
+  <aside class="launch" aria-label="Launch announcement">
+    <div class="wrap launch__inner">
+      <img class="launch__icon" src="/assets/img/corecredit-icon-96.png"
+           srcset="/assets/img/corecredit-icon-96.png 96w, /assets/img/corecredit-icon-192.png 192w"
+           sizes="56px" width="56" height="56" alt="CoreCredit app icon">
+      <div class="launch__text">
+        <p class="launch__kicker">Now available</p>
+        <p class="launch__head">CoreCredit, our first app, is on the App Store.</p>
+        <p class="launch__sub">A parts-core return and vendor-credit ledger for repair shops.
+          Free to install, works offline, no account required.</p>
+      </div>
+      <a class="btn btn--store"
+         href="https://apps.apple.com/app/corecredit-core-return-ledger/id6802336957">
+        <svg class="btn__glyph" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M10 1.5a1 1 0 0 1 1 1v9.09l3.3-3.3a1 1 0 1 1 1.4 1.42l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.42l3.3 3.3V2.5a1 1 0 0 1 1-1Z"/>
+          <path fill="currentColor" d="M3 15a1 1 0 0 1 1 1v1h12v-1a1 1 0 1 1 2 0v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 2 17.5V16a1 1 0 0 1 1-1Z"/>
+        </svg>
+        Download on the App Store
+      </a>
+    </div>
+  </aside>
+
   <!-- ---------------------------------------------------------- apps --- -->
-  <section class="section section--tint" id="apps" aria-labelledby="apps-h">
+  <section class="section" id="apps" aria-labelledby="apps-h">
     <div class="wrap">
       <div class="section__head">
         <p class="eyebrow">Apps</p>
         <h2 id="apps-h">What we make.</h2>
         <p class="lede">Each Idlery app removes friction from a real piece of work. This is
-          everything we have in flight today.</p>
+          everything Idlery has published.</p>
       </div>
 
-      <!-- One <li class="app"> per product. Adding another Idlery app later means
-           copying a single <li> block; no other part of this page changes. -->
+      <!-- One <li class="app"> per published product. Adding another Idlery app
+           later means copying a single <li> block; no other part of this page
+           changes. An app that is not on the App Store does not get a card here —
+           the portfolio note below covers work in progress without implying that
+           anything unreleased can be downloaded. -->
       <ul class="apps">
-        <li class="app">
+        <li class="app app--featured">
           <div class="app__body">
             <div>
               <div class="app__head">
@@ -98,7 +183,7 @@
                      srcset="/assets/img/corecredit-icon-96.png 96w, /assets/img/corecredit-icon-192.png 192w"
                      sizes="64px" width="64" height="64" alt="CoreCredit app icon">
                 <h3 class="app__name">CoreCredit</h3>
-                <span class="badge">Coming soon</span>
+                <span class="badge badge--live">Available on the App Store</span>
               </div>
 
               <p class="app__tagline">Know exactly how much core-credit money is still at risk.</p>
@@ -111,46 +196,88 @@
 
               <ul class="app__points">
                 <li>Built for owner-operated one-to-five-bay auto, diesel, collision, and equipment-repair shops.</li>
+                <li>Returning a core does not settle it — only a recorded vendor credit does.</li>
                 <li>Works offline, with no account and no sign-in.</li>
                 <li>Records stay on the device — there is no Idlery server behind it.</li>
               </ul>
 
               <div class="btn-row app__actions">
-                <a class="btn btn--primary" href="https://corecredit.idlery.com">Visit corecredit.idlery.com</a>
+                <a class="btn btn--store"
+                   href="https://apps.apple.com/app/corecredit-core-return-ledger/id6802336957">
+                  <svg class="btn__glyph" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                    <path fill="currentColor" d="M10 1.5a1 1 0 0 1 1 1v9.09l3.3-3.3a1 1 0 1 1 1.4 1.42l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.42l3.3 3.3V2.5a1 1 0 0 1 1-1Z"/>
+                    <path fill="currentColor" d="M3 15a1 1 0 0 1 1 1v1h12v-1a1 1 0 1 1 2 0v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 2 17.5V16a1 1 0 0 1 1-1Z"/>
+                  </svg>
+                  Download on the App Store
+                </a>
+                <a class="app__link" href="https://corecredit.idlery.com">corecredit.idlery.com
+                  <span class="app__link-arrow" aria-hidden="true">&rarr;</span></a>
               </div>
+              <p class="app__store-note">iPhone, with an adaptive iPad layout · iOS 18 or later ·
+                Free to install, with an optional CoreCredit Pro subscription ·
+                United States App Store.</p>
             </div>
 
-            <!-- At-a-glance panel. This is the slot a CoreCredit screenshot takes
-                 when one is published; the panel below stands in until then. -->
             <div class="app__preview">
-              <dl class="glance">
-                <div>
-                  <dt>Status</dt>
-                  <dd>Coming soon</dd>
-                </div>
-                <div>
-                  <dt>Platform</dt>
-                  <dd>iPhone, with an adaptive iPad layout</dd>
-                </div>
-                <div>
-                  <dt>Built for</dt>
-                  <dd>Owner-operated one-to-five-bay repair shops</dd>
-                </div>
-                <div>
-                  <dt>Account</dt>
-                  <dd>None — no sign-in, works offline</dd>
-                </div>
-                <div>
-                  <dt>Your data</dt>
-                  <dd>Stays on your device</dd>
-                </div>
-                <div>
-                  <dt>Availability</dt>
-                  <dd>United States at launch</dd>
-                </div>
-              </dl>
+              <div class="app__shots">
+                <figure>
+                  <img src="/assets/img/shot-dashboard.png"
+                       srcset="/assets/img/shot-dashboard.png 390w, /assets/img/shot-dashboard@2x.png 780w"
+                       sizes="(min-width: 54rem) 11rem, 40vw" width="390" height="791"
+                       loading="lazy" decoding="async"
+                       alt="The CoreCredit dashboard on iPhone, showing money at risk of $1,048.25 across 9 cores still open with a vendor and $500.00 overdue across 4 cores past the return window.">
+                  <figcaption>Money at risk, across every unresolved core.</figcaption>
+                </figure>
+                <figure>
+                  <img src="/assets/img/shot-credit.png"
+                       srcset="/assets/img/shot-credit.png 390w, /assets/img/shot-credit@2x.png 780w"
+                       sizes="(min-width: 54rem) 11rem, 40vw" width="390" height="790"
+                       loading="lazy" decoding="async"
+                       alt="A core's detail screen for a Reman Transmission marked Disputed: $650.00 expected, $500.00 received, short by $150.00, still at risk for $150.00.">
+                  <figcaption>A short credit stays visible until it is settled.</figcaption>
+                </figure>
+              </div>
             </div>
           </div>
+        </li>
+      </ul>
+
+      <p class="portfolio-note">CoreCredit is the first Idlery app on the App Store, and today it is
+        the only one. Other work is in development; nothing appears on this page until it is
+        something you can actually download.</p>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------ approach --- -->
+  <section class="section section--tint" id="approach" aria-labelledby="approach-h">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Approach</p>
+        <h2 id="approach-h">How we decide what goes in.</h2>
+        <p class="lede">Four rules, applied to every screen. They are the reason an Idlery app is
+          small, and the reason it finishes the job it started.</p>
+      </div>
+
+      <ul class="approach">
+        <li>
+          <h3>One job, done properly</h3>
+          <p>A narrow tool that finishes its job beats a broad one that almost does. We would
+            rather say no to a feature than blur what an app is for.</p>
+        </li>
+        <li>
+          <h3>Local-first where it makes sense</h3>
+          <p>If an app does not need a server, it should not have one. Fewer moving parts means
+            less to break, less to leak, and nothing to sign into.</p>
+        </li>
+        <li>
+          <h3>Honest about what it does</h3>
+          <p>We describe what our software actually does, including what it does not do. A tool
+            that oversells itself is a tool you cannot plan around.</p>
+        </li>
+        <li>
+          <h3>Built for the place it is used</h3>
+          <p>A parts counter is not a desk. Screens should be readable in a hurry, in bad light,
+            with one hand, by someone who is mid-job.</p>
         </li>
       </ul>
     </div>
@@ -177,29 +304,30 @@
             in.</p>
           <p>Everything we ship is built for Apple platforms, works offline wherever it sensibly can,
             and keeps your data on your device unless there is a real reason for it to be anywhere
-            else.</p>
+            else. CoreCredit, our first published app, keeps every record on the phone it was
+            entered on.</p>
         </div>
 
         <ul class="principles">
           <li>
-            <h3>One job, done properly</h3>
-            <p>A narrow tool that finishes its job beats a broad one that almost does. We would
-              rather say no to a feature than blur what an app is for.</p>
+            <h3>Small shops, real constraints</h3>
+            <p>The people we build for are working while they use the app — hands busy, gloves on,
+              a customer waiting. That is a design constraint, not a demographic.</p>
           </li>
           <li>
-            <h3>Local-first where it makes sense</h3>
-            <p>If an app does not need a server, it should not have one. Fewer moving parts means
-              less to break, less to leak, and nothing to sign into.</p>
+            <h3>No account unless it earns one</h3>
+            <p>A sign-in is a thing that can fail, leak, or lock you out. CoreCredit has none, and
+              nothing else will have one without a reason we can explain.</p>
           </li>
           <li>
-            <h3>Honest about what it does</h3>
-            <p>We describe what our software actually does, including what it does not do. A tool
-              that oversells itself is a tool you cannot plan around.</p>
+            <h3>Your data is yours</h3>
+            <p>Every Idlery app that holds records can hand them back — as a spreadsheet, as a
+              portable file, on demand, with no negotiation.</p>
           </li>
           <li>
-            <h3>Built for the place it is used</h3>
-            <p>A parts counter is not a desk. Screens should be readable in a hurry, in bad light,
-              with one hand, by someone who is mid-job.</p>
+            <h3>Shipped, or not mentioned</h3>
+            <p>An app appears on this site the day it reaches the App Store, and not before.
+              Nothing here is a sign-up sheet for something that does not exist yet.</p>
           </li>
         </ul>
       </div>
@@ -218,7 +346,7 @@
         <p class="lede">Questions about an Idlery app, help with something that is not working, press
           and partnership enquiries, or a note about the work — all of it goes to one address, and it
           is read.</p>
-        <p><a class="mailto" href="mailto:support@idlery.com">support@idlery.com</a></p>
+        <p><a class="mailto" href="mailto:support@idlery.com">support@<wbr>idlery.com</a></p>
         <p class="contact-note">There is no form here and no mailing list. Email is the whole
           channel. If you are writing about CoreCredit, the
           <a href="https://corecredit.idlery.com/support">CoreCredit support page</a> answers most
@@ -234,7 +362,12 @@
   <div class="wrap">
     <div class="site-footer__grid">
       <div class="site-footer__brand">
-        <span class="wordmark wordmark--sm">idlery</span>
+        <img class="wordmark-img wordmark-light" src="/assets/img/idlery-wordmark-light.png"
+             srcset="/assets/img/idlery-wordmark-light.png 360w, /assets/img/idlery-wordmark-light@2x.png 720w"
+             sizes="56px" width="360" height="148" alt="Idlery Services LLC">
+        <img class="wordmark-img wordmark-dark" src="/assets/img/idlery-wordmark-dark.png"
+             srcset="/assets/img/idlery-wordmark-dark.png 360w, /assets/img/idlery-wordmark-dark@2x.png 720w"
+             sizes="56px" width="360" height="148" alt="Idlery Services LLC">
         <p>Focused apps that make everyday work easier.</p>
         <p class="site-footer__email"><a href="mailto:support@idlery.com">support@idlery.com</a></p>
       </div>
@@ -243,6 +376,7 @@
         <ul>
           <li><a href="/#home">Home</a></li>
           <li><a href="/#apps">Apps</a></li>
+          <li><a href="/#approach">Approach</a></li>
           <li><a href="/#about">About</a></li>
           <li><a href="/#contact">Contact</a></li>
         </ul>
@@ -250,16 +384,19 @@
       <nav aria-labelledby="footer-corecredit">
         <h2 id="footer-corecredit">CoreCredit</h2>
         <ul>
-          <li><a href="https://corecredit.idlery.com">CoreCredit</a></li>
-          <li><a href="https://corecredit.idlery.com/support">Support</a></li>
+          <li><a href="https://apps.apple.com/app/corecredit-core-return-ledger/id6802336957">Download on the App Store</a></li>
+          <li><a href="https://corecredit.idlery.com">corecredit.idlery.com</a></li>
+          <li><a href="https://corecredit.idlery.com/support">CoreCredit Support</a></li>
           <li><a href="https://corecredit.idlery.com/privacy">Privacy Policy</a></li>
           <li><a href="https://corecredit.idlery.com/terms">Terms of Service</a></li>
         </ul>
       </nav>
     </div>
     <div class="site-footer__legal">
+      <p>Idlery Services LLC &middot; <a href="mailto:support@idlery.com">support@idlery.com</a></p>
       <p>&copy; 2026 Idlery Services LLC. All rights reserved.</p>
-      <p>Idlery and CoreCredit are trademarks of Idlery Services LLC.</p>
+      <p>Idlery and CoreCredit are trademarks of Idlery Services LLC. Apple, App Store, iPhone and
+        iPad are trademarks of Apple Inc.</p>
     </div>
   </div>
 </footer>

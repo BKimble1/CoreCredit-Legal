@@ -157,21 +157,43 @@ The same four URLs go into App Store Connect — Privacy Policy URL is mandatory
 and an auto-renewable subscription also requires a Terms of Use (EULA) link.
 Use the marketing URL for the app's Marketing URL field.
 
-## 10. Before you launch
+## 10. After a launch update
 
-**Have an attorney review the Privacy Policy and Terms of Service before the app
-is publicly available.** Both documents are written to describe what CoreCredit
-actually does, and they carry a real effective date of 18 August 2026 rather than
-a placeholder — but they have not been reviewed by counsel, and they set out
-governing law (Ohio), exclusive venue (Butler County, Ohio), warranty disclaimers,
-a liability cap, and indemnification. Those are the clauses worth a lawyer's hour.
+The archives now carry the launched product. Re-drag them onto the two existing
+Netlify sites (**Deploys → drag and drop**), then check the launch-specific
+things directly in a browser:
 
-Two things to decide with that review:
+- `https://corecredit.idlery.com/` shows **Available now on the App Store**, a
+  **Download on the App Store** button, and real app screenshots.
+- Every App Store button on both sites lands on
+  <https://apps.apple.com/app/corecredit-core-return-ledger/id6802336957>.
+- On an iPhone, `corecredit.idlery.com` shows Safari's Smart App Banner for
+  CoreCredit at the top of the page, and the download button opens the App Store
+  app rather than a web page.
+- On a desktop, the QR code at the foot of the CoreCredit page scans to the same
+  listing. (`build/make_qr.py` regenerates it and proves it decodes by
+  rasterising the written SVG and reading it back.)
+- `https://idlery.com/` says CoreCredit is available, with no "coming soon"
+  anywhere — `build/check_content.py` fails the build if that language returns.
+
+## 11. The legal pages still want a lawyer's hour
+
+**The Privacy Policy and Terms of Service have not been reviewed by counsel.**
+The app is now publicly available, so this is no longer a pre-launch item — it is
+an outstanding one. Both documents describe what CoreCredit actually does and
+carry a real effective date of 18 August 2026 rather than a stand-in, but they set
+out governing law (Ohio), exclusive venue (Butler County, Ohio), warranty
+disclaimers, a liability cap, and indemnification. Those are the clauses worth an
+attorney's time.
+
+Neither document's promises were changed by the launch update; only the pages'
+launch-state wording was. Two things to raise at that review:
 
 - **The subscription section of the Terms** describes the free tier (five
   simultaneously unresolved cores) and the Pro entitlement (unlimited), and states
-  that Apple sets and displays pricing. No price is hard-coded on the website, so
-  nothing needs changing there when pricing is finalised.
+  that Apple sets and displays pricing. **No price appears anywhere on either
+  website** — deliberately, so a storefront price change can never make the site
+  wrong. Apple shows the current price on the listing and on the paywall.
 - **Apple's terms.** The Terms state that Apple's Media Services terms and standard
   EULA apply *alongside* them. If you later configure a custom EULA in App Store
   Connect, revisit that section.
@@ -216,29 +238,36 @@ Re-drag the new ZIP onto the same Netlify site's **Deploys** tab. Domains, DNS,
 and certificates stay attached to the site, so they survive a redeploy. Keep the
 two sites separate; deploying one archive over the other's site will replace it.
 
-## Known follow-up for version 2
+## Regenerating the assets
 
-The Idlery brand artwork was not available when these sites were built, so the
-Idlery wordmark currently renders as text in the brand teal, and the favicon,
-touch icon and social-preview mark are simple on-brand stand-ins generated
-locally — deliberately plainer than the real Idlery square mark rather than an
-imitation of it. The CoreCredit app icon **is** the real artwork throughout.
+Both sites' images are generated from artwork that lives in other repositories,
+by scripts in `build/`. Nothing is drawn by hand and nothing is invented.
 
-When the wordmark and square-mark files are available:
+| Command | What it produces |
+|---|---|
+| `python3 build/make_brand_assets.py <IdleryWordmark.png>` | The Idlery wordmark (light and dark, transparent), the square mark, the favicon and touch icon, and `idlery-og.png`. Every glyph shape comes out of the supplied artwork's own alpha channel; the brand teal `#3aa6ab` is sampled from it. |
+| `python3 build/make_screenshots.py <CoreCredit repo> <corecredit-appstore repo>` | The device captures used on both sites. Each is cropped to remove the iOS status bar and re-encoded; no app UI is redrawn, recoloured or composited. |
+| `python3 build/make_og.py` | `corecredit-og.png`, the CoreCredit social card. |
+| `python3 build/make_qr.py` | `appstore-qr.svg`, and it fails unless the written file rasterises and decodes back to the exact App Store URL. |
+| `python3 build/prune_assets.py` | Deletes any image no page references. |
 
-1. Sample the exact brand colours from the artwork and update the six teal tokens
-   at the top of `assets/css/idlery.css`.
-2. Add `idlery-wordmark-light.png` and `idlery-wordmark-dark.png` to
-   `assets/img/`, and replace `<span class="wordmark">idlery</span>` in the header
-   and footer with the two `<img class="wordmark-img wordmark-light/dark">`
-   elements. The light/dark switching rules are already in the stylesheet, and the
-   markup carries a comment showing the exact replacement.
-3. Regenerate the mark derivatives and the Open Graph image from the real square
-   mark.
+`build/make_idlery_assets.py`, which drew interim stand-in brand artwork while
+the real wordmark was unavailable, has been removed: the real artwork is in use
+and re-running that script would have replaced it with the stand-ins.
 
-Similarly, the CoreCredit "A look at the app" section currently describes the six
-screens in words and says plainly that screenshots will be published when the app
-reaches the App Store. No mock-ups or invented app UI appear anywhere on either
-site. When real screenshots exist, each `<li>` in that section takes an image
-above its heading, and the CoreCredit card on idlery.com has a matching slot where
-the at-a-glance panel now sits.
+## Checking a change before you deploy
+
+`bash build/verify.sh` serves both sites locally **with their own `_headers`
+applied** and runs everything:
+
+| Check | What it catches |
+|---|---|
+| `build/check.py` | Malformed HTML, heading jumps, duplicate ids, images without `alt` or dimensions, and any local link or image reference that does not resolve. |
+| `build/contrast.py` | Every foreground/background pair the sites use, in light and dark, against WCAG AA. The palettes are parsed out of the stylesheets, so a token change is checked at its new value. |
+| `build/check_content.py` | Stale launch language, a wrong App Store URL or ID, invalid JSON-LD, a missing canonical or social card, a Smart App Banner in the wrong place, an unexpected outbound host, `_redirects` and `sitemap.xml` entries that point nowhere. |
+| `build/verify_browser.mjs` | Renders every page in headless Chromium at 320 / 390 / 768 / 1024 / 1440 / 1920, in light and dark, at the default font size and at 24px, and reports console errors (which is how a CSP violation shows up), failed requests, horizontal overflow, and tap targets under 40px. |
+
+The local server applying the real `Content-Security-Policy` is the point of it:
+`style-src 'self'` silently drops an inline `style` attribute, and a browser
+reports that only as a console violation. That is how the inline styles that had
+been on these pages since they were written were found and removed.

@@ -10,16 +10,18 @@
 :root {
   color-scheme: light dark;
 
-  /* Sampled from the Idlery wordmarks and square brand mark. */
-  --teal-ink: #0a737d;   /* teal dark enough to carry body-size text on white */
-  --teal: #0f96a1;       /* the wordmark teal */
-  --teal-bright: #3ec7cf; /* the lighter end of the brand-mark gradient */
-  --teal-wash: #e8f7f8;
-  --teal-edge: #b9e6e9;
-  --navy: #1b2733;       /* the dark-wordmark ground */
+  /* Sampled from the Idlery wordmark artwork: the ink is #3aa6ab, and every
+     other teal here is that exact hue and saturation at a different lightness.
+     build/contrast.py checks each pairing this file actually uses. */
+  --teal-ink: #24686b;   /* teal dark enough to carry body-size text on white — 6.5:1 */
+  --teal: #3aa6ab;       /* the wordmark teal itself */
+  --teal-bright: #54c0c5;
+  --teal-wash: #e8f7f7;
+  --teal-edge: #b3e3e5;
+  --navy: #1b2733;
 
   --ground: #ffffff;
-  --ground-tint: #f2fafb;
+  --ground-tint: #f4fafa;
   --surface: #ffffff;
   --rule: #dfe8ea;
   --rule-strong: #c3d4d7;
@@ -46,11 +48,11 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --teal-ink: #5fd8e0;
-    --teal: #46ccd5;
-    --teal-bright: #7ee4ea;
-    --teal-wash: #102c31;
-    --teal-edge: #1f4b52;
+    --teal-ink: #8dd5d8;
+    --teal: #6ecace;
+    --teal-bright: #b3e3e5;
+    --teal-wash: #0f2b2d;
+    --teal-edge: #21575a;
     --navy: #0d161f;
 
     --ground: #0e1820;
@@ -112,7 +114,7 @@ a:hover { color: var(--teal); }
   border-radius: 0.3rem;
 }
 
-::selection { background: var(--teal); color: #fff; }
+::selection { background: var(--teal-ink); color: #fff; }
 
 .skip-link {
   position: absolute;
@@ -195,6 +197,8 @@ a:hover { color: var(--teal); }
 .brand {
   display: inline-flex;
   align-items: center;
+  min-height: 2.75rem;
+  padding-right: 0.25rem;
   margin-right: auto;
   text-decoration: none;
   border-radius: 0.4rem;
@@ -205,6 +209,9 @@ a:hover { color: var(--teal); }
    Swapping in the artwork is a matter of replacing the <span class="wordmark">
    with the two .wordmark-img elements; the light/dark rules below already
    cover both cases. */
+/* Typographic fallback for the wordmark artwork. It is set in --teal-ink
+   rather than the brand teal because, unlike the artwork, it is real text:
+   WCAG exempts a logotype rendered as an image, not a line of styled text. */
 .wordmark {
   display: inline-block;
   font-size: 1.6875rem;
@@ -212,7 +219,7 @@ a:hover { color: var(--teal); }
   letter-spacing: -0.035em;
   /* room for the descender on the y — line-height: 1 clips it */
   line-height: 1.25;
-  color: var(--teal);
+  color: var(--teal-ink);
   text-transform: lowercase;
 }
 .wordmark--sm { font-size: 1.375rem; margin-bottom: 0.75rem; }
@@ -256,13 +263,21 @@ a:hover { color: var(--teal); }
   justify-content: center;
   gap: 0.5rem;
   padding: 0.8rem 1.5rem;
+  padding-inline: clamp(0.75rem, 5vw, 1.5rem);
   min-height: 3rem;
   border-radius: 999px;
   border: 1px solid transparent;
   font: inherit;
   font-size: 1.0625rem;
   font-weight: 650;
+  text-align: center;
   text-decoration: none;
+  text-wrap: balance;
+  max-width: 100%;
+  /* As a flex item in .btn-row, `min-width: auto` would hold the label on one
+     line and push the whole card wider than a narrow screen once the reader's
+     default font size goes up. Zero lets the label wrap instead. */
+  min-width: 0;
   cursor: pointer;
   transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
 }
@@ -281,12 +296,8 @@ a:hover { color: var(--teal); }
 /* ----------------------------------------------------------------- hero -- */
 .hero {
   position: relative;
-  padding-block: clamp(3.5rem, 9vw, 7.5rem) clamp(3rem, 8vw, 6.5rem);
-  background:
-    radial-gradient(52rem 34rem at 92% -14%, var(--teal-wash), transparent 58%),
-    radial-gradient(38rem 26rem at -8% 112%, var(--teal-wash), transparent 60%),
-    var(--ground);
-  border-bottom: 1px solid var(--rule);
+  padding-block: clamp(3.25rem, 8vw, 6.5rem) clamp(3rem, 7vw, 5.5rem);
+  background: var(--ground);
 }
 .hero__grid {
   display: grid;
@@ -301,14 +312,19 @@ a:hover { color: var(--teal); }
 
 .hero__mark { display: grid; place-items: center; }
 .hero__mark img {
-  width: clamp(6.5rem, 14vw, 13rem);
+  width: clamp(6.5rem, 14vw, 12rem);
   height: auto;
   border-radius: 22.5%;
-  filter: drop-shadow(0 18px 44px rgb(15 150 161 / 0.24));
+  box-shadow: 0 1px 2px rgb(36 104 107 / 0.16), 0 18px 44px rgb(36 104 107 / 0.18);
 }
 @media (max-width: 63.99rem) {
   .hero__mark { justify-items: start; }
   .hero__mark img { width: 5.5rem; }
+}
+@media (max-width: 47.99rem) {
+  /* On a phone the header wordmark is already on screen and the launch band's
+     app icon follows immediately; a third mark between them is noise. */
+  .hero__mark { display: none; }
 }
 .hero h1 { margin-block: 1.125rem 1.5rem; }
 .hero .lede { max-width: 36rem; }
@@ -355,7 +371,7 @@ a:hover { color: var(--teal); }
   padding: clamp(1.5rem, 4vw, 2.75rem);
 }
 @media (min-width: 54rem) {
-  .app__body { grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr); align-items: center; }
+  .app__body { grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.8fr); align-items: center; }
 }
 
 .app__head {
@@ -380,7 +396,7 @@ a:hover { color: var(--teal); }
   font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.01em;
-  white-space: nowrap;
+  max-width: 100%;
 }
 .badge::before {
   content: "";
@@ -549,3 +565,190 @@ a:hover { color: var(--teal); }
   color: var(--ink);
   line-height: 1.45;
 }
+
+/* ==========================================================================
+   Launch — added when CoreCredit reached the App Store, together with the
+   real Idlery wordmark artwork.
+   ========================================================================== */
+
+/* A single hairline of brand teal across the top of every page: the one piece
+   of pure decoration on the site, and the only place the brand colour is used
+   at full strength as a field. */
+.brandline {
+  height: 3px;
+  background: var(--teal);
+}
+
+/* ------------------------------------------------------- real wordmark --- */
+/* The artwork replaced the interim typographic wordmark. The .wordmark span
+   rules above stay as a fallback if an image ever fails to load.
+
+   Both variants ship in the markup and the colour scheme picks one. These
+   declarations come after the originals, so they are the ones that decide —
+   a bare `.wordmark-img { display: block }` here would have re-shown the dark
+   copy in light mode and printed the wordmark twice. */
+.brand .wordmark-img { height: 1.6875rem; width: auto; }
+.wordmark-light { display: block; }
+.wordmark-dark { display: none; }
+@media (prefers-color-scheme: dark) {
+  .wordmark-light { display: none; }
+  .wordmark-dark { display: block; }
+}
+
+/* -------------------------------------------------------- launch band ---- */
+.launch {
+  background: var(--teal-wash);
+  border-block: 1px solid var(--teal-edge);
+  padding-block: clamp(1.5rem, 3.5vw, 2.25rem);
+}
+.launch__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.75rem;
+}
+.launch__icon {
+  border-radius: 22.5%;
+  flex: none;
+  box-shadow: var(--shadow-sm);
+}
+.launch__text { flex: 1 1 20rem; min-width: 0; }
+.launch__kicker {
+  margin: 0 0 0.2rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--teal-ink);
+}
+.launch__head {
+  margin: 0;
+  font-size: clamp(1.0625rem, 1rem + 0.5vw, 1.375rem);
+  font-weight: 700;
+  letter-spacing: -0.016em;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.launch__sub { margin: 0.35rem 0 0; font-size: 0.9375rem; color: var(--ink-mid); }
+.launch .btn { flex: none; }
+
+/* --------------------------------------------------- App Store button ---- */
+/* A typographic button, not a reproduction of Apple's "Download on the App
+   Store" badge: the official artwork is not in this repository, and an
+   approximation of it would be worse than an honest button. */
+.btn--store {
+  background: var(--teal-ink);
+  color: #fff;
+  font-weight: 700;
+  padding-block: 0.85rem;
+}
+.btn--store:hover { background: var(--ink); color: #fff; }
+@media (prefers-color-scheme: dark) {
+  .btn--store { background: var(--teal); color: #062426; }
+  .btn--store:hover { background: var(--teal-bright); color: #062426; }
+}
+.btn__glyph { flex: none; }
+
+/* ---------------------------------------------------------- app cards ---- */
+.app--featured { border-color: var(--teal-edge); }
+
+/* The product-site link beside the App Store button. A second pill would
+   compete with the primary action and, at this column width, would not fit
+   beside it either. */
+.app__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.75rem;
+  padding-inline: 0.25rem;
+  font-weight: 650;
+  color: var(--teal-ink);
+  text-decoration: none;
+  border-bottom: 2px solid var(--teal-edge);
+  border-radius: 0.25rem 0.25rem 0 0;
+}
+.app__link:hover { border-bottom-color: currentColor; }
+.app__link-arrow { transition: transform 0.18s ease; }
+.app__link:hover .app__link-arrow { transform: translateX(0.15rem); }
+@media (prefers-reduced-motion: reduce) {
+  .app__link:hover .app__link-arrow { transform: none; }
+}
+.app__store-note { margin-top: 0.875rem; font-size: 0.875rem; color: var(--ink-soft); }
+
+.badge--live {
+  border-color: var(--teal-edge);
+  background: var(--surface);
+  color: var(--teal-ink);
+}
+
+/* Screenshot pair inside the featured card. */
+.app__shots {
+  display: flex;
+  gap: 0.875rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+.app__shots figure {
+  margin: 0;
+  flex: 1 1 0;
+  max-width: 11.5rem;
+  border-radius: 1.35rem;
+  padding: 0.35rem;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  box-shadow: var(--shadow-sm);
+}
+.app__shots img { border-radius: 1.05rem; width: 100%; height: auto; }
+.app__shots figcaption {
+  margin-top: 0.5rem;
+  padding: 0 0.2rem 0.15rem;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: var(--ink-soft);
+  text-align: center;
+}
+@media (max-width: 25rem) {
+  .app__shots figure:last-child { display: none; }
+  .app__shots figure { max-width: 13rem; }
+}
+
+/* -------------------------------------------------------- portfolio ------ */
+.portfolio-note {
+  margin-top: 1.75rem;
+  max-width: 42rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  padding-left: 1rem;
+  border-left: 2px solid var(--rule-strong);
+}
+
+/* --------------------------------------------------------- approach ------ */
+.approach { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.25rem; }
+@media (min-width: 48rem) { .approach { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 72rem) { .approach { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+.approach li {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: clamp(1.25rem, 3vw, 1.625rem);
+  box-shadow: var(--shadow-sm);
+  display: grid;
+  align-content: start;
+  gap: 0.5rem;
+}
+.approach h3 { margin: 0; }
+.approach p { color: var(--ink-mid); font-size: 0.9375rem; line-height: 1.6; }
+
+/* --------------------------------------------------------- about --------- */
+.about-grid > .stack > p { color: var(--ink-mid); }
+
+/* --------------------------------------------------------- footer -------- */
+.site-footer__brand .wordmark-img { height: 1.4375rem; width: auto; margin-bottom: 0.875rem; }
+
+/* ----------------------------------------------------------- utilities --- */
+/* The site's Content-Security-Policy is `style-src 'self'` with no
+   'unsafe-inline', so a style attribute would be dropped by the browser
+   without any error. Everything that used to be an inline style is a class. */
+.u-mt-xl { margin-top: 2rem; }

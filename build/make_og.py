@@ -57,7 +57,7 @@ def corecredit_og(out: Path):
     f_foot = ImageFont.truetype(REG, 24)
 
     d.text((240, 128), "CORECREDIT", font=f_kicker, fill="#0053fd")
-    d.text((240, 168), "Coming soon for iPhone", font=f_sub, fill="#55617a")
+    d.text((240, 168), "Now on the App Store for iPhone", font=f_sub, fill="#55617a")
 
     y = 300
     for line in wrap(d, "Know exactly how much core-credit money is still at risk.", f_head, 1030):

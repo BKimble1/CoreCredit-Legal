@@ -16,6 +16,7 @@ https://www.idlery.com/*           https://idlery.com/:splat        301!
 # Section addresses resolve directly to their anchor on the single-page site,
 # so /apps, /about and /contact are real, linkable URLs.
 /apps                              /#apps                           301!
+/approach                          /#approach                       301!
 /about                             /#about                          301!
 /contact                           /#contact                        301!
 /home                              /                                301!
@@ -23,6 +24,8 @@ https://www.idlery.com/*           https://idlery.com/:splat        301!
 
 # CoreCredit lives on its own site.
 /corecredit                        https://corecredit.idlery.com/   301!
+/app-store                         https://apps.apple.com/app/corecredit-core-return-ledger/id6802336957  301!
+/corecredit/app-store              https://apps.apple.com/app/corecredit-core-return-ledger/id6802336957  301!
 /corecredit/*                      https://corecredit.idlery.com/:splat  301!
 /support                           https://corecredit.idlery.com/support 301!
 /privacy                           https://corecredit.idlery.com/privacy 301!

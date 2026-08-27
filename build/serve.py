@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-"""Tiny static server that mimics Netlify's clean-URL resolution and 404 page.
+"""Tiny static server that mimics Netlify's clean-URL resolution, 404 page and
+the response headers from the site's own `_headers` file.
+
+Serving the real Content-Security-Policy locally matters: `style-src 'self'`
+silently drops an inline style attribute, and a browser reports that only as a
+console violation. Verifying against the deployed headers is the only way to see
+those before Netlify does.
 
 Usage: python3 build/serve.py <root-dir> <port>
 """
@@ -13,6 +19,43 @@ from pathlib import Path
 
 ROOT = Path(sys.argv[1]).resolve()
 PORT = int(sys.argv[2])
+
+
+def load_headers(root: Path):
+    """Parse Netlify's `_headers` into [(path-pattern, {header: value})]."""
+    rules, current = [], None
+    source = root / "_headers"
+    if not source.is_file():
+        return rules
+    for raw in source.read_text(encoding="utf-8").splitlines():
+        line = raw.rstrip()
+        if not line.strip() or line.lstrip().startswith("#"):
+            continue
+        if not line.startswith((" ", "\t")):
+            current = (line.strip(), {})
+            rules.append(current)
+        elif current is not None and ":" in line:
+            name, _, value = line.strip().partition(":")
+            current[1][name.strip()] = value.strip()
+    return rules
+
+
+HEADER_RULES = load_headers(ROOT)
+
+
+def headers_for(path: str):
+    """Netlify applies every matching rule, later ones winning."""
+    out = {}
+    for pattern, values in HEADER_RULES:
+        if pattern.endswith("/*"):
+            match = path.startswith(pattern[:-1])
+        elif pattern.startswith("/*."):
+            match = path.endswith(pattern[2:])
+        else:
+            match = path == pattern
+        if match:
+            out.update(values)
+    return out
 
 
 class Handler(http.server.BaseHTTPRequestHandler):
@@ -40,6 +83,12 @@ class Handler(http.server.BaseHTTPRequestHandler):
         self.send_response(status)
         self.send_header("Content-Type", ctype)
         self.send_header("Content-Length", str(len(data)))
+        rel = "/" + str(target.relative_to(ROOT)).replace("\\", "/")
+        for name, value in headers_for(rel).items():
+            # HSTS over plain http would poison the browser profile for localhost.
+            if name.lower() in ("strict-transport-security", "cache-control"):
+                continue
+            self.send_header(name, value)
         self.send_header("Cache-Control", "no-store")
         self.end_headers()
         if self.command != "HEAD":

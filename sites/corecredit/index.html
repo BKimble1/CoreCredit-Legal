@@ -3,17 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CoreCredit — Know exactly how much core-credit money is still at risk</title>
-<meta name="description" content="CoreCredit is a local-first iPhone ledger for parts-core charges. Track every refundable core from the moment it lands on the invoice until the vendor credit actually arrives. Coming soon.">
+<title>CoreCredit — Core return and vendor-credit ledger for repair shops</title>
+<meta name="description" content="CoreCredit is on the App Store. A local-first iPhone ledger for parts-core charges: track every refundable core from the invoice through the physical return until the vendor credit actually arrives. No account, works offline.">
 <link rel="canonical" href="https://corecredit.idlery.com/">
+<meta name="apple-itunes-app" content="app-id=6802336957">
 <meta name="theme-color" content="#f4f6fb" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#080b12" media="(prefers-color-scheme: dark)">
 <meta name="color-scheme" content="light dark">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="CoreCredit">
 <meta property="og:url" content="https://corecredit.idlery.com/">
-<meta property="og:title" content="CoreCredit — Know exactly how much core-credit money is still at risk">
-<meta property="og:description" content="A local-first iPhone ledger for parts-core charges, built for owner-operated repair shops. Returning a core does not mean the money has been credited.">
+<meta property="og:title" content="CoreCredit — Core return and vendor-credit ledger for repair shops">
+<meta property="og:description" content="Now on the App Store. A local-first iPhone ledger for parts-core charges, built for owner-operated repair shops. Returning a core does not mean the money has been credited.">
 <meta property="og:image" content="https://corecredit.idlery.com/assets/img/corecredit-og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -23,6 +24,123 @@
 <link rel="icon" href="/assets/img/corecredit-icon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="/assets/img/corecredit-icon-180.png">
 <link rel="stylesheet" href="/assets/css/corecredit.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://corecredit.idlery.com/#app",
+      "name": "CoreCredit",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "Parts-core return and vendor-credit ledger",
+      "operatingSystem": "iOS 18.0 or later",
+      "url": "https://corecredit.idlery.com/",
+      "downloadUrl": "https://apps.apple.com/app/corecredit-core-return-ledger/id6802336957",
+      "installUrl": "https://apps.apple.com/app/corecredit-core-return-ledger/id6802336957",
+      "description": "A local-first ledger for refundable parts-core charges. CoreCredit tracks every core from the moment the charge lands on an invoice, through the physical return to the vendor, until the vendor credit is actually recorded. Returning a core does not remove it from money at risk.",
+      "featureList": [
+        "Total money at risk across every unresolved core",
+        "Overdue and due-soon return windows per vendor",
+        "Returned-but-awaiting-credit tracking",
+        "Vendor return batches",
+        "Full and short credit reconciliation",
+        "Evidence photos and exportable dispute packets",
+        "On-device barcode and document scanning with a review step",
+        "Local deadline reminders",
+        "CSV and JSON export"
+      ],
+      "screenshot": [
+        "https://corecredit.idlery.com/assets/img/shot-dashboard@2x.png",
+        "https://corecredit.idlery.com/assets/img/shot-cores@2x.png",
+        "https://corecredit.idlery.com/assets/img/shot-credit@2x.png"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://apps.apple.com/app/corecredit-core-return-ledger/id6802336957",
+        "eligibleRegion": { "@type": "Country", "name": "United States" }
+      },
+      "isAccessibleForFree": true,
+      "publisher": { "@id": "https://idlery.com/#organization" },
+      "softwareHelp": { "@type": "CreativeWork", "url": "https://corecredit.idlery.com/support" },
+      "privacyPolicy": "https://corecredit.idlery.com/privacy",
+      "termsOfService": "https://corecredit.idlery.com/terms"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://idlery.com/#organization",
+      "name": "Idlery Services LLC",
+      "url": "https://idlery.com/",
+      "email": "support@idlery.com"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://corecredit.idlery.com/#website",
+      "url": "https://corecredit.idlery.com/",
+      "name": "CoreCredit",
+      "publisher": { "@id": "https://idlery.com/#organization" },
+      "about": { "@id": "https://corecredit.idlery.com/#app" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://corecredit.idlery.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do I need an account to use CoreCredit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. There is no sign-up, no sign-in and no password, because there is no CoreCredit server to sign in to. Install the app and start recording cores."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is my data stored?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On your device, in the app's own storage, using Apple's on-device storage frameworks. Idlery Services LLC holds no copy of your ledger. Your records may be included in your ordinary Apple device backups according to your own Apple settings."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does a returned core still count as money at risk?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because the money has not come back yet. A core moves to Returned — awaiting credit when it goes back to the vendor, and it stays counted in money at risk until a real vendor credit is recorded against it, the shortfall is disputed, or it is deliberately written off."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does CoreCredit work offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. CoreCredit is local-first and designed to work offline. Barcode reading and text recognition run on the device, and deadline reminders are local notifications scheduled and delivered by the device itself."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is included free, and what does Pro add?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The free tier tracks up to five simultaneously unresolved cores; credited and written-off cores do not count toward that limit, so settling one frees a slot. CoreCredit Pro is an optional subscription that removes the limit. Records you have already entered are never hidden or locked, whatever your entitlement does."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is CoreCredit accounting software?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. CoreCredit is not accounting or bookkeeping software, not a repair-order or inventory system, and not a vendor integration. It tracks core charges and vendor credits, and it has no relationship with your suppliers."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -46,7 +164,7 @@
 
 <main id="main">
 
-  <!-- ---------------------------------------------------------- hero --- -->
+  <!-- ---------------------------------------------------- launch hero --- -->
   <section class="hero">
     <div class="wrap">
       <div class="hero__grid">
@@ -60,12 +178,243 @@
             owner-operated one-to-five-bay auto, diesel, collision, and equipment-repair shops.
             Every core is tracked from the moment it lands on an invoice until the vendor credit
             actually shows up.</p>
-          <div class="hero__meta">
-            <span class="status-pill">Coming soon for iPhone</span>
-            <span>Designed for iPhone, adapts to iPad</span>
+
+          <p class="u-mt-lg"><span class="status-pill status-pill--live">Available now on the App Store</span></p>
+
+          <div class="btn-row u-mt-sm">
+            <a class="btn btn--store"
+               href="https://apps.apple.com/app/corecredit-core-return-ledger/id6802336957">
+              <svg class="btn__glyph" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M10 1.5a1 1 0 0 1 1 1v9.09l3.3-3.3a1 1 0 1 1 1.4 1.42l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.42l3.3 3.3V2.5a1 1 0 0 1 1-1Z"/>
+                <path fill="currentColor" d="M3 15a1 1 0 0 1 1 1v1h12v-1a1 1 0 1 1 2 0v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 2 17.5V16a1 1 0 0 1 1-1Z"/>
+              </svg>
+              Download on the App Store
+            </a>
+            <a class="btn btn--ghost" href="#how-it-works">See how it works</a>
           </div>
+          <p class="cta-note">iPhone, with an adaptive iPad layout · iOS 18 or later · Free to
+            install, with an optional CoreCredit Pro subscription · United States App Store.</p>
         </div>
 
+        <div class="hero__shot">
+          <figure class="device">
+            <img src="/assets/img/shot-dashboard.png"
+                 srcset="/assets/img/shot-dashboard.png 390w, /assets/img/shot-dashboard@2x.png 780w"
+                 sizes="(min-width: 60rem) 20rem, min(20rem, 84vw)"
+                 width="390" height="791" fetchpriority="high"
+                 alt="The CoreCredit dashboard on iPhone, showing money at risk of $1,048.25 across 9 cores still open with a vendor, $500.00 overdue across 4 cores past the return window, and a Needs attention list.">
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------- real screenshots --- -->
+  <section class="section section--tint" id="screens" aria-labelledby="screens-h">
+    <div class="wrap stack-lg">
+      <div class="stack">
+        <p class="eyebrow">A look at the app</p>
+        <h2 id="screens-h">Built to be read across a parts counter.</h2>
+        <p class="lede">Plain figures, plain status names, and a layout that survives a workshop
+          rather than a showroom. These are screens from the shipping app.</p>
+      </div>
+
+      <ul class="shots">
+        <li>
+          <figure class="device">
+            <img src="/assets/img/shot-dashboard.png"
+                 srcset="/assets/img/shot-dashboard.png 390w, /assets/img/shot-dashboard@2x.png 780w"
+                 sizes="min(17rem, 80vw)" width="390" height="791" loading="lazy" decoding="async"
+                 alt="Dashboard screen: money at risk $1,048.25 across 9 open cores, $500.00 overdue across 4 cores, Add core and Scan core buttons, and a Needs attention list showing a Rack &amp; Pinion 20 days overdue and a Diesel Fuel Injector 6 days overdue.">
+          </figure>
+          <figcaption>
+            <h3>Dashboard</h3>
+            <p>Total money at risk across every unresolved core, with what is overdue, what is due
+              soon, and what has gone back but has not been credited.</p>
+          </figcaption>
+        </li>
+        <li>
+          <figure class="device">
+            <img src="/assets/img/shot-cores.png"
+                 srcset="/assets/img/shot-cores.png 390w, /assets/img/shot-cores@2x.png 780w"
+                 sizes="min(17rem, 80vw)" width="390" height="791" loading="lazy" decoding="async"
+                 alt="Cores screen: a searchable list of 11 cores with part, vendor, amount and status — Ready, Written off, Credited, Returned and Disputed — each with its days overdue.">
+          </figure>
+          <figcaption>
+            <h3>Cores</h3>
+            <p>The whole ledger in one list — part, vendor, amount, status, and due date —
+              searchable and filterable down to the one core you are arguing about.</p>
+          </figcaption>
+        </li>
+        <li>
+          <figure class="device">
+            <img src="/assets/img/shot-credit.png"
+                 srcset="/assets/img/shot-credit.png 390w, /assets/img/shot-credit@2x.png 780w"
+                 sizes="min(17rem, 80vw)" width="390" height="790" loading="lazy" decoding="async"
+                 alt="A core's detail screen for a Reman Transmission, marked Disputed and 5 days overdue: core charge $650.00, credit received $500.00, short by $150.00, still at risk $150.00, with the credit memo and credit date recorded.">
+          </figure>
+          <figcaption>
+            <h3>Short credit, still at risk</h3>
+            <p>A credit that came back short leaves the shortfall visible and the core unresolved,
+              with the credit memo and date kept beside it.</p>
+          </figcaption>
+        </li>
+        <li>
+          <figure class="device">
+            <img src="/assets/img/shot-returns.png"
+                 srcset="/assets/img/shot-returns.png 390w, /assets/img/shot-returns@2x.png 780w"
+                 sizes="min(17rem, 80vw)" width="390" height="741" loading="lazy" decoding="async"
+                 alt="Returns screen: a Tri-state Parts batch with one core ready to go back, a list of open returns by vendor with their return references, and a Waiting on credit total of $1,080.00 still owed.">
+          </figure>
+          <figcaption>
+            <h3>Returns</h3>
+            <p>Everything going back to one vendor, grouped into a single batch with its own return
+              reference — and a running total of what is still owed.</p>
+          </figcaption>
+        </li>
+        <li>
+          <figure class="device">
+            <img src="/assets/img/shot-scan.png"
+                 srcset="/assets/img/shot-scan.png 390w, /assets/img/shot-scan@2x.png 780w"
+                 sizes="min(17rem, 80vw)" width="390" height="791" loading="lazy" decoding="async"
+                 alt="Scan core sheet with Live and Document modes: the camera pointed at a Return Core label on a box for a Diesel Fuel Injector, above a field for typing the number in by hand instead.">
+          </figure>
+          <figcaption>
+            <h3>Scan core</h3>
+            <p>Barcode and printed-text capture in one sheet, with manual entry always available
+              beside it and a review step before anything is saved.</p>
+          </figcaption>
+        </li>
+        <li>
+          <figure class="device">
+            <img src="/assets/img/shot-history.png"
+                 srcset="/assets/img/shot-history.png 390w, /assets/img/shot-history@2x.png 780w"
+                 sizes="min(17rem, 80vw)" width="390" height="791" loading="lazy" decoding="async"
+                 alt="A core's history: created, photo added, edited, status changed from awaiting old core to ready to return, added to a return batch, returned to vendor, and vendor credit recorded — each entry timestamped with its amount and reference.">
+          </figure>
+          <figcaption>
+            <h3>Every event, in order</h3>
+            <p>An append-only history behind each core: what changed, when, for how much, and
+              against which reference.</p>
+          </figcaption>
+        </li>
+      </ul>
+
+      <figure class="device device--wide device--centred">
+        <img src="/assets/img/shot-ipad.png"
+             srcset="/assets/img/shot-ipad.png 720w, /assets/img/shot-ipad@2x.png 1440w"
+             sizes="min(44rem, 92vw)" width="720" height="500" loading="lazy" decoding="async"
+             alt="CoreCredit on iPad: a sidebar of Dashboard, Cores, Returns and Settings beside the full Cores list.">
+      </figure>
+
+      <p class="shot-note">These are captures of the shipping app, cropped only to remove the iOS
+        status bar. Nothing on this site is a mock-up, a render, or an illustration of a screen
+        that does not exist.</p>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------- problem --- -->
+  <section class="section" id="problem" aria-labelledby="problem-h">
+    <div class="wrap stack-lg">
+      <div class="stack">
+        <p class="eyebrow">The problem</p>
+        <h2 id="problem-h">A core charge is your money sitting on someone else's shelf.</h2>
+        <p class="lede">Every remanufactured starter, alternator, caliper, injector, turbo, and
+          battery arrives with a refundable charge attached. The shop pays it up front and gets it
+          back only by returning the old unit to the right vendor, in time, and then actually
+          receiving the credit.</p>
+      </div>
+
+      <blockquote class="pull">
+        <p>Returning a core does not mean the money has been credited.</p>
+      </blockquote>
+
+      <div class="stack">
+        <p>That gap is where core money quietly disappears. A returned-but-uncredited core is still
+          the shop's money at risk. It stays at risk until the credit is recorded against it, the
+          shortfall is disputed, or someone deliberately writes it off. A box that left the
+          building is not a settled account.</p>
+        <p>Most one-to-five-bay shops track this on a whiteboard, a clipboard, or nothing at all,
+          because the core module in a full shop-management suite costs more than the problem
+          appears to. CoreCredit does that one narrow job and nothing else.</p>
+      </div>
+
+      <ul class="facts">
+        <li>A core that went back last month and was never credited looks exactly like one that was.</li>
+        <li>A credit that comes back short is easy to miss on a statement and hard to prove later.</li>
+        <li>A return window closes quietly, and nobody finds out until the vendor says no.</li>
+        <li>The old unit is in the building somewhere, in a box, and nobody is sure which one.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------ workflow --- -->
+  <section class="section section--tint" id="how-it-works" aria-labelledby="how-h">
+    <div class="wrap stack-lg">
+      <div class="stack">
+        <p class="eyebrow">How it works</p>
+        <h2 id="how-h">Capture, return, reconcile.</h2>
+        <p class="lede">CoreCredit follows the way a core actually moves through a shop — and holds
+          it open until the money comes back.</p>
+      </div>
+
+      <ol class="phases">
+        <li>
+          <p class="phase__label"><span>01</span> Capture</p>
+          <h3>Get the charge on the record</h3>
+          <p>A replacement part arrives with a refundable core charge. Record what it is, who it
+            came from, and what it is worth — before the paperwork goes in a drawer.</p>
+          <ul class="phase__steps">
+            <li>Amount, part, vendor, and the invoice or repair-order reference — typed, or read
+              from the paperwork with the camera.</li>
+            <li>Assign the old unit to a storage bin so it can be found in the building, usually
+              back in the box the new one came in.</li>
+            <li>Each vendor carries its own return window, so the due date is calculated rather
+              than guessed.</li>
+          </ul>
+        </li>
+        <li>
+          <p class="phase__label"><span>02</span> Return</p>
+          <h3>Send it back before the window closes</h3>
+          <p>Group everything going back to one vendor into a single return batch, and keep the
+            proof that it left.</p>
+          <ul class="phase__steps">
+            <li>Local reminders fire ahead of a deadline; overdue cores are called out on the
+              dashboard.</li>
+            <li>A return batch carries its own return reference or receipt.</li>
+            <li>Photos of the part, the box, and the paperwork stay attached to the core they
+              belong to.</li>
+          </ul>
+        </li>
+        <li>
+          <p class="phase__label"><span>03</span> Reconcile</p>
+          <h3>Only a real credit settles it</h3>
+          <p>The core moves to <strong>Returned — awaiting credit</strong> and stays counted in
+            money at risk. Returning it does not settle it.</p>
+          <ul class="phase__steps">
+            <li>Record the credit that actually arrived, against the amount that was expected.</li>
+            <li>A full credit settles the core. A short one moves it to Disputed, with the
+              shortfall shown.</li>
+            <li>A dispute packet can be exported, so the conversation with the vendor starts from
+              the record instead of from memory.</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------- money at risk --- -->
+  <section class="section" id="money-at-risk" aria-labelledby="mar-h">
+    <div class="wrap stack-lg">
+      <div class="stack">
+        <p class="eyebrow">Money at risk</p>
+        <h2 id="mar-h">One figure for everything the shop has not been paid back.</h2>
+        <p class="lede">Money at risk is the sum of what is still outstanding across every
+          unresolved core. A partially credited core in dispute counts only for what is still
+          short. Returning a core does not reduce the figure — recording a credit does.</p>
+      </div>
+
+      <div class="risk-grid">
         <div class="riskcard">
           <div class="riskcard__head">
             <span class="riskcard__label">Money at risk</span>
@@ -104,88 +453,17 @@
             </li>
           </ul>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ------------------------------------------------------- problem --- -->
-  <section class="section section--tint" id="problem" aria-labelledby="problem-h">
-    <div class="wrap stack-lg">
-      <div class="stack">
-        <p class="eyebrow">The problem</p>
-        <h2 id="problem-h">A core charge is your money sitting on someone else's shelf.</h2>
-        <p class="lede">Every remanufactured starter, alternator, caliper, injector, turbo, and
-          battery arrives with a refundable charge attached. The shop pays it up front and gets it
-          back only by returning the old unit to the right vendor, in time, and then actually
-          receiving the credit.</p>
+        <figure class="device">
+          <img src="/assets/img/shot-credit.png"
+               srcset="/assets/img/shot-credit.png 390w, /assets/img/shot-credit@2x.png 780w"
+               sizes="min(17rem, 80vw)" width="390" height="790" loading="lazy" decoding="async"
+               alt="The same Reman Transmission core after a short credit: $650.00 expected, $500.00 received, short by $150.00, and still at risk for $150.00.">
+        </figure>
       </div>
 
-      <blockquote class="pull">
-        <p>Returning a core does not mean the money has been credited.</p>
-      </blockquote>
-
-      <div class="stack">
-        <p>That gap is where core money quietly disappears. A returned-but-uncredited core is still
-          the shop's money at risk. It stays at risk until the credit is recorded against it, the
-          shortfall is disputed, or someone deliberately writes it off. A box that left the
-          building is not a settled account.</p>
-        <p>Most one-to-five-bay shops track this on a whiteboard, a clipboard, or nothing at all,
-          because the core module in a full shop-management suite costs more than the problem
-          appears to. CoreCredit does that one narrow job and nothing else.</p>
-      </div>
-
-      <ul class="facts">
-        <li>A core that went back last month and was never credited looks exactly like one that was.</li>
-        <li>A credit that comes back short is easy to miss on a statement and hard to prove later.</li>
-        <li>A return window closes quietly, and nobody finds out until the vendor says no.</li>
-        <li>The old unit is in the building somewhere, in a box, and nobody is sure which one.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ------------------------------------------------------ workflow --- -->
-  <section class="section" id="how-it-works" aria-labelledby="how-h">
-    <div class="wrap stack-lg">
-      <div class="stack">
-        <p class="eyebrow">How it works</p>
-        <h2 id="how-h">Six steps, from the invoice to the credit.</h2>
-        <p class="lede">CoreCredit follows the way a core actually moves through a shop. Nothing is
-          settled until the money comes back.</p>
-      </div>
-
-      <ol class="steps">
-        <li>
-          <h3>Log the core charge</h3>
-          <p>A replacement part arrives with a refundable core charge. Record the amount, the part,
-            the vendor, and the invoice or repair-order reference — typed, or read from the
-            paperwork with the camera.</p>
-        </li>
-        <li>
-          <h3>Keep the old unit findable</h3>
-          <p>Assign the old part to a storage bin so it can be found in the building, usually back
-            in the box the new one came in.</p>
-        </li>
-        <li>
-          <h3>Watch the return window</h3>
-          <p>Each vendor carries its own return window. Due dates are calculated from it, and local
-            reminders fire before the deadline closes.</p>
-        </li>
-        <li>
-          <h3>Return it in a batch</h3>
-          <p>Group everything going back to one vendor into a single return batch, and keep the
-            return reference or receipt with it.</p>
-        </li>
-        <li>
-          <h3>Wait for the credit — visibly</h3>
-          <p>The core moves to <strong>Returned — awaiting credit</strong> and stays counted in money
-            at risk. Returning it does not settle it.</p>
-        </li>
-        <li>
-          <h3>Reconcile, dispute, or write off</h3>
-          <p>Record the credit that actually arrived. A full credit settles the core. A short one
-            moves it to Disputed with the shortfall shown and a dispute packet ready to export.</p>
-        </li>
-      </ol>
+      <p class="shot-note">CoreCredit cannot make a vendor accept a return or issue a credit. What
+        it can do is make sure a missing or short one never stops being visible.</p>
     </div>
   </section>
 
@@ -272,59 +550,8 @@
     </div>
   </section>
 
-  <!-- ---------------------------------------------------- screenshots --- -->
-  <section class="section" id="preview" aria-labelledby="preview-h">
-    <div class="wrap stack-lg">
-      <div class="stack">
-        <p class="eyebrow">A look at the app</p>
-        <h2 id="preview-h">Built to be read across a parts counter.</h2>
-        <p class="lede">Plain figures, plain status names, and a layout that survives a workshop
-          rather than a showroom. Here is what you will be working with.</p>
-      </div>
-
-      <!-- Screen summaries. When app screenshots are published, each <li> takes an
-           <img> above its heading; the grid and copy stay as they are. -->
-      <ol class="screens">
-        <li>
-          <h3>Dashboard</h3>
-          <p>Total money at risk across every unresolved core, with what is overdue, what is due
-            soon, and what has gone back but has not been credited.</p>
-        </li>
-        <li>
-          <h3>Cores</h3>
-          <p>The whole ledger in one list — part, vendor, amount, status, and due date — searchable
-            and filterable down to the one core you are arguing about.</p>
-        </li>
-        <li>
-          <h3>Scan core</h3>
-          <p>Barcode and printed-text capture in one sheet, with a review step before anything is
-            saved and manual entry always available beside it.</p>
-        </li>
-        <li>
-          <h3>Returns</h3>
-          <p>Everything going back to one vendor, grouped into a single batch with its own return
-            reference, so a whole run can be reconciled together.</p>
-        </li>
-        <li>
-          <h3>Core detail</h3>
-          <p>One core's full history: amounts expected and received, the shortfall if there is one,
-            evidence photos, and every event recorded against it.</p>
-        </li>
-        <li>
-          <h3>Dispute packet</h3>
-          <p>A short or missing credit assembled into one exportable document, so the conversation
-            with the vendor starts from the record rather than from memory.</p>
-        </li>
-      </ol>
-
-      <p class="preview-note">Screenshots of the finished app will be published here when CoreCredit
-        reaches the App Store. Until then this page describes the app rather than illustrating it —
-        there are no mock-ups on this site.</p>
-    </div>
-  </section>
-
   <!-- -------------------------------------------------------- privacy --- -->
-  <section class="section section--tint" id="privacy-first" aria-labelledby="privacy-h">
+  <section class="section" id="privacy-first" aria-labelledby="privacy-h">
     <div class="wrap stack-lg">
       <div class="stack">
         <p class="eyebrow">Local-first by design</p>
@@ -341,24 +568,158 @@
         <li>The camera is requested only after you start a scan or a photo capture.</li>
         <li>Exports leave the app only when you deliberately share or save them.</li>
         <li>Reminders are local notifications, scheduled and delivered by your device.</li>
-        <li>Subscription purchases, when they arrive, are handled entirely by Apple.</li>
+        <li>Subscription purchases are handled entirely by Apple.</li>
       </ul>
 
       <p><a class="btn btn--ghost" href="/privacy">Read the full privacy policy</a></p>
     </div>
   </section>
 
-  <!-- -------------------------------------------------------- coming --- -->
-  <section class="section" id="coming-soon" aria-labelledby="coming-h">
+  <!-- -------------------------------------------------- free and pro --- -->
+  <section class="section section--tint" id="pricing" aria-labelledby="pricing-h">
+    <div class="wrap stack-lg">
+      <div class="stack">
+        <p class="eyebrow">Free and Pro</p>
+        <h2 id="pricing-h">Free to install. Pro when five open cores stop being enough.</h2>
+        <p class="lede">The difference between the two is one number: how many cores can be
+          unresolved at the same time. Everything else in the app is the same on both.</p>
+      </div>
+
+      <ul class="plans">
+        <li>
+          <h3 class="plan__name">CoreCredit <span class="plan__price">Free</span></h3>
+          <p class="plan__intro">The whole ledger, for a shop with a
+            handful of cores open at a time.</p>
+          <ul class="plan__list">
+            <li>Track up to five simultaneously unresolved cores.</li>
+            <li>Credited and written-off cores do not count toward the five — settling one frees a slot.</li>
+            <li>Vendors, storage bins, return batches, and credit reconciliation.</li>
+            <li>Barcode and document scanning, evidence photos, reminders, and exports.</li>
+            <li class="is-limit">A sixth unresolved core is where the limit appears.</li>
+          </ul>
+        </li>
+        <li class="plan--pro">
+          <h3 class="plan__name">CoreCredit Pro <span class="plan__price">Optional subscription</span></h3>
+          <p class="plan__intro">The same app with the cap removed,
+            for a shop that carries more than five open cores at once.</p>
+          <ul class="plan__list">
+            <li>Unlimited simultaneously unresolved cores.</li>
+            <li>Sold by Apple through the App Store, monthly or annually. Apple shows the price for
+              your storefront at the time of purchase.</li>
+            <li>Manage or cancel it in your Apple Account settings; deleting the app does not
+              cancel a subscription.</li>
+            <li>Restore Purchases brings it back on a new device, because a subscription follows
+              the Apple Account that bought it.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p class="shot-note"><strong>Your records are never held hostage.</strong> If Pro lapses, every
+        core you have already entered stays visible, editable, and exportable. The limit applies
+        only to creating a new unresolved core beyond the free five.</p>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------ FAQ --- -->
+  <section class="section" id="faq" aria-labelledby="faq-h">
+    <div class="wrap stack-lg">
+      <div class="stack">
+        <p class="eyebrow">Questions</p>
+        <h2 id="faq-h">The things shops ask first.</h2>
+      </div>
+
+      <dl class="faq">
+        <div>
+          <dt>Do I need an account?</dt>
+          <dd><p>No. There is no sign-up, no sign-in, and no password, because there is no
+            CoreCredit server to sign in to. Install the app and start recording cores. It also
+            means Idlery cannot look anything up for you — support can help you use the app, not
+            retrieve records it has never held a copy of.</p></dd>
+        </div>
+        <div>
+          <dt>Where is my data stored?</dt>
+          <dd><p>On your device, in the app's own storage. Your shop profile, vendors, bins, core
+            records, return batches, event history, evidence photos, and settings all live there.
+            They may be included in your ordinary Apple device backups, according to your own Apple
+            settings — that is a backup you make, not a transmission to Idlery.</p></dd>
+        </div>
+        <div>
+          <dt>Why is a core still "at risk" after I returned it?</dt>
+          <dd><p>Because the money has not come back. Returning the old unit moves the core to
+            <strong>Returned — awaiting credit</strong>, and it keeps counting toward money at risk
+            until a real vendor credit is recorded against it, the shortfall is disputed, or it is
+            deliberately written off.</p>
+            <p>That is the whole point of the product. A missing or short credit stays visible
+              instead of quietly disappearing the moment the box leaves the building.</p></dd>
+        </div>
+        <div>
+          <dt>Does it work without a signal?</dt>
+          <dd><p>Yes. CoreCredit is local-first and designed to work offline. Barcode reading and
+            text recognition run on the device, and deadline reminders are local notifications that
+            your device schedules and delivers itself.</p></dd>
+        </div>
+        <div>
+          <dt>How accurate is the scanning?</dt>
+          <dd><p>Barcodes read reliably; printed text depends on the invoice. Either way, nothing a
+            scan reads is saved on its own — recognised amounts, part numbers, references, and dates
+            land on a review screen first and become part of a record only when you confirm them.
+            Manual entry is available in every state of the capture screen.</p></dd>
+        </div>
+        <div>
+          <dt>What is free, and what does Pro add?</dt>
+          <dd><p>The free tier tracks up to five simultaneously unresolved cores. Credited and
+            written-off cores do not count toward that limit, so settling one frees a slot.
+            CoreCredit Pro removes the limit. Records you have already entered are never hidden or
+            locked, whatever your entitlement does.</p></dd>
+        </div>
+        <div>
+          <dt>Is this accounting software?</dt>
+          <dd><p>No — and it is not a repair-order system, an inventory manager, a vendor
+            integration, or a complete shop-management suite. It tracks core charges and vendor
+            credits. It has no relationship with your suppliers and cannot make a vendor accept a
+            return or issue a credit.</p></dd>
+        </div>
+        <div>
+          <dt>Can I get my data out?</dt>
+          <dd><p>Yes. CoreCredit exports a CSV of the ledger for a spreadsheet, a JSON backup the
+            app itself can read back, and dispute packets for a short or missing credit. Everything
+            is generated on the device and leaves only through the standard share sheet, when you
+            choose where to send it.</p></dd>
+        </div>
+      </dl>
+
+      <p><a class="btn btn--ghost" href="/support">More answers on the support page</a></p>
+    </div>
+  </section>
+
+  <!-- --------------------------------------------------- closing CTA --- -->
+  <section class="section section--tint" id="get" aria-labelledby="get-h">
     <div class="wrap">
       <div class="finale">
-        <img src="/assets/img/corecredit-icon-256.png" width="88" height="88" alt="" >
-        <h2 id="coming-h">CoreCredit is coming soon to iPhone.</h2>
-        <p class="lede">It is finished enough to describe honestly and not finished enough to
-          download. When it is on the App Store, this page will say so — and it will be the first
-          place that does. There is no waitlist to join and no email to leave.</p>
-        <p><span class="status-pill">Coming soon for iPhone</span></p>
-        <p style="margin-top:1.5rem"><a class="poweredby" href="https://idlery.com">
+        <img src="/assets/img/corecredit-icon-256.png" width="88" height="88" alt="">
+        <h2 id="get-h">CoreCredit is on the App Store.</h2>
+        <p class="lede">Install it, add the core sitting on your counter right now, and see what the
+          shop is actually owed. No account, no sign-in, nothing to configure first.</p>
+
+        <div class="finale__cta">
+          <a class="btn btn--store"
+             href="https://apps.apple.com/app/corecredit-core-return-ledger/id6802336957">
+            <svg class="btn__glyph" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M10 1.5a1 1 0 0 1 1 1v9.09l3.3-3.3a1 1 0 1 1 1.4 1.42l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.42l3.3 3.3V2.5a1 1 0 0 1 1-1Z"/>
+              <path fill="currentColor" d="M3 15a1 1 0 0 1 1 1v1h12v-1a1 1 0 1 1 2 0v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 2 17.5V16a1 1 0 0 1 1-1Z"/>
+            </svg>
+            Download on the App Store
+          </a>
+          <span class="status-pill status-pill--live">Available now</span>
+        </div>
+
+        <figure class="qr">
+          <img src="/assets/img/appstore-qr.svg" width="136" height="136"
+               alt="QR code for the CoreCredit listing on the App Store.">
+          <figcaption>Point a phone camera here to open the App Store listing.</figcaption>
+        </figure>
+
+        <p class="u-mt-md"><a class="poweredby" href="https://idlery.com">
           Powered by Idlery
         </a></p>
       </div>
@@ -377,12 +738,13 @@
           CoreCredit
         </a>
         <p>A local-first ledger for parts-core charges and vendor credits, for owner-operated
-          repair shops. Coming soon for iPhone.</p>
+          repair shops. Available on the App Store for iPhone.</p>
       </div>
       <nav aria-labelledby="footer-cc">
         <h2 id="footer-cc">CoreCredit</h2>
         <ul>
           <li><a href="/">Overview</a></li>
+          <li><a href="https://apps.apple.com/app/corecredit-core-return-ledger/id6802336957">Download on the App Store</a></li>
           <li><a href="/support">Support</a></li>
           <li><a href="/privacy">Privacy Policy</a></li>
           <li><a href="/terms">Terms of Service</a></li>
@@ -397,7 +759,7 @@
       </nav>
     </div>
     <div class="site-footer__legal">
-      <p>CoreCredit is published by Idlery Services LLC. Initial availability is the United States only.</p>
+      <p>CoreCredit is published by Idlery Services LLC. Version 1 is offered on the App Store in the United States only.</p>
       <p>&copy; 2026 Idlery Services LLC. All rights reserved.</p>
     </div>
   </div>
