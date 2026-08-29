@@ -227,7 +227,7 @@ a:hover { color: var(--blue-deep); }
 }
 .site-nav a {
   display: block;
-  padding: 0.4rem 0.6rem;
+  padding: 0.6rem 0.6rem;
   border-radius: var(--radius-sm);
   font-size: 0.9375rem;
   font-weight: 600;
@@ -547,7 +547,7 @@ a:hover { color: var(--blue-deep); }
   text-decoration: none;
 }
 .poweredby:hover { border-color: var(--blue-edge); background: var(--blue-wash); color: var(--blue-deep); }
-.poweredby img { border-radius: 0.3rem; }
+.poweredby img { border-radius: 22.5%; flex: none; }
 
 /* ------------------------------------------------------------- footer ---- */
 .site-footer {
@@ -1007,3 +1007,19 @@ a:hover { color: var(--blue-deep); }
 .plan__intro { color: var(--ink-mid); font-size: 0.9688rem; }
 .device--centred { margin-inline: auto; width: min(44rem, 100%); }
 .notfound__legal { margin-top: 1.5rem; font-size: 0.9375rem; color: var(--ink-soft); }
+
+/* An inline <a>'s hit area is its content box — about 17px tall at this text
+   size, under the 24px WCAG 2.5.8 minimum even though the row it sits in looks
+   taller. inline-block plus padding makes the target match what the eye reads;
+   the row spacing comes down by the same amount so the footer looks unchanged. */
+.site-footer nav a,
+.site-footer__email a {
+  display: inline-block;
+  padding-block: 0.3rem;
+}
+.site-footer li + li { margin-top: 0.2rem; }
+
+/* Same reasoning for the table of contents on the legal pages: these are
+   navigation, not prose, so each entry needs a real target. */
+.toc a { display: inline-block; padding-block: 0.3rem; }
+.toc li { margin-bottom: 0.05rem; }

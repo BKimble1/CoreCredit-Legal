@@ -41,6 +41,11 @@ Every page is self-contained static HTML and CSS: no web font, no CDN, no
 analytics, no cookie, and — apart from one 52-line progressive-enhancement
 script on the Idlery site — no JavaScript.
 
+`brand/` holds the two pieces of Idlery artwork every derived asset comes from:
+the 1024 × 1024 app icon, which is also the anchor for the site's whole colour
+system, and the wordmark. `python3 build/make_brand_assets.py` regenerates the
+marks, favicon, touch icon, manifest icons, wordmark and social card from them.
+
 Contact: support@idlery.com
 
 Copyright 2026 Idlery Services LLC.

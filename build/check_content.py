@@ -135,6 +135,10 @@ for label, (root, origin) in SITES.items():
             fail(where, "no favicon link")
         if "apple-touch-icon" not in p.links:
             fail(where, "no apple-touch-icon link")
+        if p.links.get("manifest") != ["/site.webmanifest"]:
+            fail(where, f"manifest link is {p.links.get('manifest')}, expected ['/site.webmanifest']")
+        if "og:locale" not in p.meta and not is404:
+            fail(where, "missing <meta> og:locale")
 
         # The Smart App Banner belongs on the product site only.
         banner = p.meta.get("apple-itunes-app", [])
@@ -178,6 +182,40 @@ for label, (root, origin) in SITES.items():
                 fail(where, f"link to an unexpected host: {href}")
             if target == "_blank" and (not rel_attr or "noopener" not in rel_attr):
                 fail(where, f'target="_blank" without rel="noopener": {href}')
+
+    # The web app manifest: valid JSON, and every icon it names must exist at
+    # exactly the size it claims. A wrong `sizes` is silent — the browser simply
+    # picks a different icon, or none.
+    manifest = root / "site.webmanifest"
+    if not manifest.is_file():
+        fail(label, "no site.webmanifest, but the pages link one")
+    else:
+        try:
+            data = json.loads(manifest.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as e:
+            fail(f"{label}/site.webmanifest", f"does not parse: {e}")
+            data = None
+        if data is not None:
+            for key in ("name", "short_name", "start_url", "scope", "icons", "theme_color"):
+                if key not in data:
+                    fail(f"{label}/site.webmanifest", f"missing key: {key}")
+            if not re.fullmatch(r"#[0-9a-fA-F]{6}", str(data.get("theme_color", ""))):
+                fail(f"{label}/site.webmanifest", f"theme_color is not a 6-digit hex: {data.get('theme_color')}")
+            for icon in data.get("icons", []):
+                src = icon.get("src", "")
+                target = root / src.lstrip("/")
+                if not target.is_file():
+                    fail(f"{label}/site.webmanifest", f"icon does not exist: {src}")
+                    continue
+                with target.open("rb") as fh:
+                    head = fh.read(26)
+                if head[:8] == b"\x89PNG\r\n\x1a\n":
+                    import struct
+                    w, h = struct.unpack(">II", head[16:24])
+                    if icon.get("sizes") != f"{w}x{h}":
+                        fail(f"{label}/site.webmanifest",
+                             f"{src} is {w}x{h} but the manifest says {icon.get('sizes')}")
+            print("  [ok ] site.webmanifest icons exist at the sizes declared")
 
     # Redirect targets and sitemap entries must point at something real.
     redirects = root / "_redirects"

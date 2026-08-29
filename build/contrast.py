@@ -108,14 +108,14 @@ ID_PAIRS = [
     ("launch heading on teal_wash", "ink", "teal_wash", 4.5),
     ("launch sub on teal_wash", "ink_mid", "teal_wash", 4.5),
     ("live badge on surface", "teal_ink", "surface", 4.5),
-    # The wordmark is supplied artwork in the brand teal (#3aa6ab, 2.91:1 on
-    # white). WCAG 1.4.11 exempts a logotype from the non-text contrast
-    # minimum, and the images carry alt="Idlery", so the company name is
-    # available to a reader who cannot see the mark at all. The typographic
-    # fallback, which *is* text, is set in --teal-ink and is covered above.
-    # The brand hairline is decorative and aria-hidden; this only asserts it
-    # remains plainly visible.
-    ("brandline vs ground (decorative)", "teal", "ground", 2.5),
+    # The wordmark is supplied artwork painted in --brand-top. WCAG 1.4.11
+    # exempts a logotype from the non-text contrast minimum, and the images
+    # carry alt="Idlery", so the company name reaches a reader who cannot see
+    # the mark at all. The typographic fallback, which *is* text, is set in
+    # --teal-ink and is covered above. The brand hairline is decorative and
+    # aria-hidden; this only asserts its darkest stop stays plainly visible.
+    ("wordmark artwork vs ground (logotype)", "brand_top", "ground", 2.5),
+    ("brandline darkest stop vs ground (decorative)", "brand_top", "ground", 2.5),
     ("focus ring vs ground", "teal_ink", "ground", 3.0),
 ]
 

@@ -122,17 +122,26 @@ for (const { name, origin } of targets) {
             for (const el of document.querySelectorAll("a[href], button")) {
               const r = el.getBoundingClientRect();
               if (r.width === 0 || r.height === 0) continue;
-              // Links inside a run of prose are exempt: they are text, and the
-              // tap-target minimum applies to standalone controls.
-              const inProse = el.closest("p, li, dd, figcaption, .site-footer__legal");
+              // A link inside a run of prose is text, and WCAG 2.5.8 exempts
+              // it. A link inside a <nav> is a control even though it sits in
+              // an <li>, so it is measured — that exemption was hiding the
+              // primary navigation from this check.
+              const inNav = el.closest("nav");
+              const inProse = !inNav && el.closest("p, li, dd, figcaption, .site-footer__legal");
               if (inProse) continue;
-              if (r.height < 40 || r.width < 40) {
-                out.push(`${el.tagName.toLowerCase()} "${(el.textContent || "").trim().slice(0, 28)}" ${Math.round(r.width)}x${Math.round(r.height)}`);
+
+              // 24x24 is the WCAG 2.5.8 AA minimum and applies to every control
+              // here. A primary button or the brand link is held to 40, which is
+              // what a thumb actually wants.
+              const primary = el.matches(".btn, .brand, .footer-brand, .poweredby, .app__link");
+              const min = primary ? 40 : 24;
+              if (r.height < min || r.width < min) {
+                out.push(`${el.tagName.toLowerCase()} "${(el.textContent || "").trim().slice(0, 28)}" ${Math.round(r.width)}x${Math.round(r.height)} (min ${min})`);
               }
             }
             return out;
           });
-          for (const s of small) note(label, `tap target under 40px: ${s}`);
+          for (const s of small) note(label, `tap target too small: ${s}`);
 
           if (fontSize !== 16) {
             const cdp = await context.newCDPSession(page);

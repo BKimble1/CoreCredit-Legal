@@ -7,10 +7,11 @@ ROOT = Path(__file__).resolve().parent.parent
 
 for site in ("sites/corecredit", "sites/idlery"):
     d = ROOT / site
-    text = "\n".join(
-        f.read_text(encoding="utf-8")
-        for f in list(d.rglob("*.html")) + list(d.rglob("*.css")) + list(d.rglob("*.js"))
-    )
+    # Every text file that can name an image, the manifest included — scanning
+    # only HTML/CSS/JS would let this delete an icon the manifest depends on.
+    sources = [f for pattern in ("*.html", "*.css", "*.js", "*.webmanifest", "*.xml", "*.txt")
+               for f in d.rglob(pattern)]
+    text = "\n".join(f.read_text(encoding="utf-8") for f in sources)
     img_dir = d / "assets/img"
     removed = []
     for img in sorted(img_dir.iterdir()):

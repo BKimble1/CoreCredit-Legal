@@ -10,18 +10,25 @@
 :root {
   color-scheme: light dark;
 
-  /* Sampled from the Idlery wordmark artwork: the ink is #3aa6ab, and every
-     other teal here is that exact hue and saturation at a different lightness.
-     build/contrast.py checks each pairing this file actually uses. */
-  --teal-ink: #24686b;   /* teal dark enough to carry body-size text on white — 6.5:1 */
-  --teal: #3aa6ab;       /* the wordmark teal itself */
-  --teal-bright: #54c0c5;
-  --teal-wash: #e8f7f7;
-  --teal-edge: #b3e3e5;
+  /* Anchored to the Idlery app icon. --brand-top / --brand-mid / --brand-bottom
+     are read straight off its gradient; every other teal is that gradient's
+     hue and saturation (H 186, S 0.65) at a different lightness. The wordmark
+     artwork is repainted in --brand-top by build/make_brand_assets.py for the
+     same reason — its supplied render is a duller teal that reads as a second
+     colour beside the icon. build/contrast.py checks each pairing in use. */
+  --brand-top: #189bba;
+  --brand-mid: #2dc2d2;
+  --brand-bottom: #70e5e8;
+
+  --teal-ink: #196d76;   /* dark enough to carry body-size text on white — 6.0:1 */
+  --teal: #2dc2d2;       /* the icon's mid tone: the accent, never body text */
+  --teal-bright: #57cedb;
+  --teal-wash: #e6f8fa;
+  --teal-edge: #abe7ed;
   --navy: #1b2733;
 
   --ground: #ffffff;
-  --ground-tint: #f4fafa;
+  --ground-tint: #f3fbfc;
   --surface: #ffffff;
   --rule: #dfe8ea;
   --rule-strong: #c3d4d7;
@@ -48,11 +55,11 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --teal-ink: #8dd5d8;
-    --teal: #6ecace;
-    --teal-bright: #b3e3e5;
-    --teal-wash: #0f2b2d;
-    --teal-edge: #21575a;
+    --teal-ink: #89dde6;
+    --teal: #77d7e2;
+    --teal-bright: #abe7ed;
+    --teal-wash: #0c2c31;
+    --teal-edge: #17545c;
     --navy: #0d161f;
 
     --ground: #0e1820;
@@ -240,7 +247,7 @@ a:hover { color: var(--teal); }
 }
 .site-nav a {
   display: block;
-  padding: 0.45rem 0.7rem;
+  padding: 0.6rem 0.7rem;
   border-radius: 999px;
   font-size: 0.9375rem;
   font-weight: 600;
@@ -254,6 +261,12 @@ a:hover { color: var(--teal); }
   .brand { margin-right: 0; width: 100%; }
   .site-nav { width: 100%; }
   .site-nav ul { margin-left: -0.7rem; }
+}
+@media (max-width: 26rem) {
+  /* Five items on one row rather than four and an orphan. Only the horizontal
+     padding gives way; the tap target keeps its height. */
+  .site-nav ul { gap: 0.25rem 0.15rem; margin-left: -0.45rem; }
+  .site-nav a { padding-inline: 0.45rem; }
 }
 
 /* -------------------------------------------------------------- buttons -- */
@@ -315,16 +328,15 @@ a:hover { color: var(--teal); }
   width: clamp(6.5rem, 14vw, 12rem);
   height: auto;
   border-radius: 22.5%;
-  box-shadow: 0 1px 2px rgb(36 104 107 / 0.16), 0 18px 44px rgb(36 104 107 / 0.18);
+  box-shadow: 0 1px 2px rgb(24 155 186 / 0.18), 0 20px 46px rgb(24 155 186 / 0.22);
 }
 @media (max-width: 63.99rem) {
   .hero__mark { justify-items: start; }
   .hero__mark img { width: 5.5rem; }
 }
 @media (max-width: 47.99rem) {
-  /* On a phone the header wordmark is already on screen and the launch band's
-     app icon follows immediately; a third mark between them is noise. */
-  .hero__mark { display: none; }
+  /* Small enough not to crowd the launch band's app icon just below it. */
+  .hero__mark img { width: 4.5rem; }
 }
 .hero h1 { margin-block: 1.125rem 1.5rem; }
 .hero .lede { max-width: 36rem; }
@@ -576,7 +588,7 @@ a:hover { color: var(--teal); }
    at full strength as a field. */
 .brandline {
   height: 3px;
-  background: var(--teal);
+  background: linear-gradient(90deg, var(--brand-top), var(--brand-mid) 55%, var(--brand-bottom));
 }
 
 /* ------------------------------------------------------- real wordmark --- */
@@ -752,3 +764,14 @@ a:hover { color: var(--teal); }
    'unsafe-inline', so a style attribute would be dropped by the browser
    without any error. Everything that used to be an inline style is a class. */
 .u-mt-xl { margin-top: 2rem; }
+
+/* An inline <a>'s hit area is its content box — about 17px tall at this text
+   size, under the 24px WCAG 2.5.8 minimum even though the row it sits in looks
+   taller. inline-block plus padding makes the target match what the eye reads;
+   the row spacing comes down by the same amount so the footer looks unchanged. */
+.site-footer nav a,
+.site-footer__email a {
+  display: inline-block;
+  padding-block: 0.3rem;
+}
+.site-footer li + li { margin-top: 0.2rem; }

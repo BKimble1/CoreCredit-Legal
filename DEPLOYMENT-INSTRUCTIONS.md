@@ -213,9 +213,10 @@ idlery-netlify.zip                 corecredit-netlify.zip
 ├── sitemap.xml                    ├── terms/index.html
 ├── _headers                       ├── 404.html
 ├── _redirects                     ├── robots.txt
-└── assets/                        ├── sitemap.xml
-    ├── css/idlery.css             ├── _headers
-    ├── js/nav.js                  ├── _redirects
+├── site.webmanifest               ├── sitemap.xml
+└── assets/                        ├── _headers
+    ├── css/idlery.css             ├── _redirects
+    ├── js/nav.js                  ├── site.webmanifest
     └── img/                       └── assets/
                                        ├── css/corecredit.css
                                        └── img/
@@ -245,15 +246,29 @@ by scripts in `build/`. Nothing is drawn by hand and nothing is invented.
 
 | Command | What it produces |
 |---|---|
-| `python3 build/make_brand_assets.py <IdleryWordmark.png>` | The Idlery wordmark (light and dark, transparent), the square mark, the favicon and touch icon, and `idlery-og.png`. Every glyph shape comes out of the supplied artwork's own alpha channel; the brand teal `#3aa6ab` is sampled from it. |
+| `python3 build/make_brand_assets.py` | Every Idlery brand asset, from the two source files in `brand/`. The square mark, touch icon, favicon and manifest icons are the **real app icon**, resampled. The wordmark is keyed out of its white ground and repainted in the icon's own top tone. `idlery-og.png` too. Takes no arguments — the sources are committed. |
 | `python3 build/make_screenshots.py <CoreCredit repo> <corecredit-appstore repo>` | The device captures used on both sites. Each is cropped to remove the iOS status bar and re-encoded; no app UI is redrawn, recoloured or composited. |
 | `python3 build/make_og.py` | `corecredit-og.png`, the CoreCredit social card. |
 | `python3 build/make_qr.py` | `appstore-qr.svg`, and it fails unless the written file rasterises and decodes back to the exact App Store URL. |
 | `python3 build/prune_assets.py` | Deletes any image no page references. |
 
+### The colour system
+
+Every teal on idlery.com is sampled from `brand/idlery-app-icon-1024.png`.
+`--brand-top` `#189bba`, `--brand-mid` `#2dc2d2` and `--brand-bottom` `#70e5e8`
+are read straight off the icon's gradient; the rest of the ramp is that hue and
+saturation (H 186, S 0.65) at other lightnesses, chosen so each pairing clears
+WCAG AA — `build/contrast.py` proves it.
+
+The supplied wordmark render is a duller teal (`#3aa6ab`), far enough from the
+icon (ΔE76 ≈ 12) to read as a *second* colour when the two sit together in the
+header. `make_brand_assets.py` therefore repaints the wordmark in `--brand-top`
+rather than shipping both. To change the brand colour, replace the icon and
+re-run the script — nothing else hard-codes a teal.
+
 `build/make_idlery_assets.py`, which drew interim stand-in brand artwork while
-the real wordmark was unavailable, has been removed: the real artwork is in use
-and re-running that script would have replaced it with the stand-ins.
+the real artwork was unavailable, has been removed: re-running it would have
+replaced the real icon with the stand-ins.
 
 ## Checking a change before you deploy
 
@@ -264,8 +279,8 @@ applied** and runs everything:
 |---|---|
 | `build/check.py` | Malformed HTML, heading jumps, duplicate ids, images without `alt` or dimensions, and any local link or image reference that does not resolve. |
 | `build/contrast.py` | Every foreground/background pair the sites use, in light and dark, against WCAG AA. The palettes are parsed out of the stylesheets, so a token change is checked at its new value. |
-| `build/check_content.py` | Stale launch language, a wrong App Store URL or ID, invalid JSON-LD, a missing canonical or social card, a Smart App Banner in the wrong place, an unexpected outbound host, `_redirects` and `sitemap.xml` entries that point nowhere. |
-| `build/verify_browser.mjs` | Renders every page in headless Chromium at 320 / 390 / 768 / 1024 / 1440 / 1920, in light and dark, at the default font size and at 24px, and reports console errors (which is how a CSP violation shows up), failed requests, horizontal overflow, and tap targets under 40px. |
+| `build/check_content.py` | Stale launch language, a wrong App Store URL or ID, invalid JSON-LD, a missing canonical or social card, a Smart App Banner in the wrong place, an unexpected outbound host, `_redirects` and `sitemap.xml` entries that point nowhere, and a `site.webmanifest` whose icons do not exist at the sizes it declares. |
+| `build/verify_browser.mjs` | Renders every page in headless Chromium at 320 / 390 / 768 / 1024 / 1440 / 1920, in light and dark, at the default font size and at 24px, and reports console errors (which is how a CSP violation shows up), failed requests, horizontal overflow, and tap targets below the WCAG 2.5.8 minimum of 24 × 24 — 40 × 40 for buttons and brand links. |
 
 The local server applying the real `Content-Security-Policy` is the point of it:
 `style-src 'self'` silently drops an inline `style` attribute, and a browser
